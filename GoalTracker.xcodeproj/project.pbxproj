@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0224305D0DF34BA29501C49A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDFD2CE0E674E02ABCBEC97 /* libPods.a */; };
 		85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664319F2DE4C00853596 /* AppDelegate.swift */; };
 		85FA664619F2DE4C00853596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664519F2DE4C00853596 /* ViewController.swift */; };
 		85FA664919F2DE4C00853596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664719F2DE4C00853596 /* Main.storyboard */; };
 		85FA664B19F2DE4C00853596 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664A19F2DE4C00853596 /* Images.xcassets */; };
 		85FA664E19F2DE4C00853596 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664C19F2DE4C00853596 /* LaunchScreen.xib */; };
 		85FA665A19F2DE4C00853596 /* GoalTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA665919F2DE4C00853596 /* GoalTrackerTests.swift */; };
+		85FA666619F2E09A00853596 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666319F2E09A00853596 /* Bolts.framework */; };
+		85FA666719F2E09A00853596 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666419F2E09A00853596 /* Parse.framework */; };
+		85FA666D19F2E23C00853596 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666C19F2E23C00853596 /* AudioToolbox.framework */; };
+		85FA666F19F2E24800853596 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666E19F2E24800853596 /* CFNetwork.framework */; };
+		85FA667119F2E25300853596 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667019F2E25300853596 /* CoreGraphics.framework */; };
+		85FA667319F2E25C00853596 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667219F2E25C00853596 /* CoreLocation.framework */; };
+		85FA667519F2E26600853596 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667419F2E26600853596 /* libz.dylib */; };
+		85FA667719F2E27000853596 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667619F2E27000853596 /* MobileCoreServices.framework */; };
+		85FA667919F2E27A00853596 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667819F2E27A00853596 /* QuartzCore.framework */; };
+		85FA667B19F2E28300853596 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667A19F2E28300853596 /* Security.framework */; };
+		85FA667D19F2E28D00853596 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667C19F2E28D00853596 /* StoreKit.framework */; };
+		85FA667F19F2E29600853596 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667E19F2E29600853596 /* SystemConfiguration.framework */; };
+		85FA668119F2E4A900853596 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA668019F2E4A900853596 /* Accounts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BDFD2CE0E674E02ABCBEC97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A962FBC4404AC0B6E2F1E1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		85FA663E19F2DE4B00853596 /* GoalTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA664219F2DE4C00853596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85FA664319F2DE4C00853596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +52,20 @@
 		85FA665319F2DE4C00853596 /* GoalTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA665819F2DE4C00853596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85FA665919F2DE4C00853596 /* GoalTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTrackerTests.swift; sourceTree = "<group>"; };
+		85FA666319F2E09A00853596 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
+		85FA666419F2E09A00853596 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
+		85FA666919F2E0DF00853596 /* GoalTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoalTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		85FA666C19F2E23C00853596 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		85FA666E19F2E24800853596 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		85FA667019F2E25300853596 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		85FA667219F2E25C00853596 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		85FA667419F2E26600853596 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		85FA667619F2E27000853596 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		85FA667819F2E27A00853596 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		85FA667A19F2E28300853596 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		85FA667C19F2E28D00853596 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		85FA667E19F2E29600853596 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		85FA668019F2E4A900853596 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +73,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85FA668119F2E4A900853596 /* Accounts.framework in Frameworks */,
+				85FA667F19F2E29600853596 /* SystemConfiguration.framework in Frameworks */,
+				85FA667D19F2E28D00853596 /* StoreKit.framework in Frameworks */,
+				85FA667B19F2E28300853596 /* Security.framework in Frameworks */,
+				85FA667919F2E27A00853596 /* QuartzCore.framework in Frameworks */,
+				85FA667719F2E27000853596 /* MobileCoreServices.framework in Frameworks */,
+				85FA667519F2E26600853596 /* libz.dylib in Frameworks */,
+				85FA667319F2E25C00853596 /* CoreLocation.framework in Frameworks */,
+				85FA667119F2E25300853596 /* CoreGraphics.framework in Frameworks */,
+				85FA666F19F2E24800853596 /* CFNetwork.framework in Frameworks */,
+				85FA666D19F2E23C00853596 /* AudioToolbox.framework in Frameworks */,
+				85FA666619F2E09A00853596 /* Bolts.framework in Frameworks */,
+				85FA666719F2E09A00853596 /* Parse.framework in Frameworks */,
+				0224305D0DF34BA29501C49A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +100,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84A542C8F2A64CA2A94B828E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85FA668019F2E4A900853596 /* Accounts.framework */,
+				5BDFD2CE0E674E02ABCBEC97 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85FA663519F2DE4B00853596 = {
 			isa = PBXGroup;
 			children = (
+				85FA667E19F2E29600853596 /* SystemConfiguration.framework */,
+				85FA667C19F2E28D00853596 /* StoreKit.framework */,
+				85FA667A19F2E28300853596 /* Security.framework */,
+				85FA667819F2E27A00853596 /* QuartzCore.framework */,
+				85FA667619F2E27000853596 /* MobileCoreServices.framework */,
+				85FA667419F2E26600853596 /* libz.dylib */,
+				85FA667219F2E25C00853596 /* CoreLocation.framework */,
+				85FA667019F2E25300853596 /* CoreGraphics.framework */,
+				85FA666E19F2E24800853596 /* CFNetwork.framework */,
+				85FA666C19F2E23C00853596 /* AudioToolbox.framework */,
+				85FA666319F2E09A00853596 /* Bolts.framework */,
+				85FA666419F2E09A00853596 /* Parse.framework */,
 				85FA664019F2DE4B00853596 /* GoalTracker */,
 				85FA665619F2DE4C00853596 /* GoalTrackerTests */,
 				85FA663F19F2DE4B00853596 /* Products */,
+				61A962FBC4404AC0B6E2F1E1 /* Pods.xcconfig */,
+				84A542C8F2A64CA2A94B828E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +147,7 @@
 				85FA664319F2DE4C00853596 /* AppDelegate.swift */,
 				85FA664519F2DE4C00853596 /* ViewController.swift */,
 				85FA664719F2DE4C00853596 /* Main.storyboard */,
+				85FA666919F2E0DF00853596 /* GoalTracker-Bridging-Header.h */,
 				85FA664A19F2DE4C00853596 /* Images.xcassets */,
 				85FA664C19F2DE4C00853596 /* LaunchScreen.xib */,
 				85FA664119F2DE4C00853596 /* Supporting Files */,
@@ -119,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85FA665D19F2DE4C00853596 /* Build configuration list for PBXNativeTarget "GoalTracker" */;
 			buildPhases = (
+				CC59B20B449645B5BF44D547 /* Check Pods Manifest.lock */,
 				85FA663A19F2DE4B00853596 /* Sources */,
 				85FA663B19F2DE4B00853596 /* Frameworks */,
 				85FA663C19F2DE4B00853596 /* Resources */,
+				1FBA39FB228A4D509BFD462F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +276,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FBA39FB228A4D509BFD462F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC59B20B449645B5BF44D547 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		85FA663A19F2DE4B00853596 /* Sources */ = {
@@ -336,21 +439,47 @@
 		};
 		85FA665E19F2DE4C00853596 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A962FBC4404AC0B6E2F1E1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ziyang0621/Downloads/parse-library-1.4.2",
+				);
 				INFOPLIST_FILE = GoalTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Accelerate,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoalTracker/GoalTracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		85FA665F19F2DE4C00853596 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A962FBC4404AC0B6E2F1E1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ziyang0621/Downloads/parse-library-1.4.2",
+				);
 				INFOPLIST_FILE = GoalTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoalTracker/GoalTracker-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -407,6 +536,7 @@
 				85FA665F19F2DE4C00853596 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85FA666019F2DE4C00853596 /* Build configuration list for PBXNativeTarget "GoalTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +545,7 @@
 				85FA666219F2DE4C00853596 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

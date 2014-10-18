@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.setApplicationId("jJ8uwIwbayhLySJ3hIlAd2S3AjmqG2kMYkET3eRz", clientKey: "lubvDSEYJxGINkhLLMi0eMeasfmRipLgTcgx7J9r")
+        PFTwitterUtils.initializeWithConsumerKey("", consumerSecret: "")
+        
         return true
     }
 
