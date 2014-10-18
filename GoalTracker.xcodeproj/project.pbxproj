@@ -14,8 +14,6 @@
 		85FA664B19F2DE4C00853596 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664A19F2DE4C00853596 /* Images.xcassets */; };
 		85FA664E19F2DE4C00853596 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664C19F2DE4C00853596 /* LaunchScreen.xib */; };
 		85FA665A19F2DE4C00853596 /* GoalTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA665919F2DE4C00853596 /* GoalTrackerTests.swift */; };
-		85FA666619F2E09A00853596 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666319F2E09A00853596 /* Bolts.framework */; };
-		85FA666719F2E09A00853596 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666419F2E09A00853596 /* Parse.framework */; };
 		85FA666D19F2E23C00853596 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666C19F2E23C00853596 /* AudioToolbox.framework */; };
 		85FA666F19F2E24800853596 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA666E19F2E24800853596 /* CFNetwork.framework */; };
 		85FA667119F2E25300853596 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667019F2E25300853596 /* CoreGraphics.framework */; };
@@ -27,6 +25,8 @@
 		85FA667D19F2E28D00853596 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667C19F2E28D00853596 /* StoreKit.framework */; };
 		85FA667F19F2E29600853596 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA667E19F2E29600853596 /* SystemConfiguration.framework */; };
 		85FA668119F2E4A900853596 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA668019F2E4A900853596 /* Accounts.framework */; };
+		85FA668319F2E96700853596 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA668219F2E96700853596 /* Bolts.framework */; };
+		85FA668519F2E96B00853596 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FA668419F2E96B00853596 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +66,8 @@
 		85FA667C19F2E28D00853596 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		85FA667E19F2E29600853596 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		85FA668019F2E4A900853596 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		85FA668219F2E96700853596 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		85FA668419F2E96B00853596 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +86,8 @@
 				85FA667119F2E25300853596 /* CoreGraphics.framework in Frameworks */,
 				85FA666F19F2E24800853596 /* CFNetwork.framework in Frameworks */,
 				85FA666D19F2E23C00853596 /* AudioToolbox.framework in Frameworks */,
-				85FA666619F2E09A00853596 /* Bolts.framework in Frameworks */,
-				85FA666719F2E09A00853596 /* Parse.framework in Frameworks */,
+				85FA668319F2E96700853596 /* Bolts.framework in Frameworks */,
+				85FA668519F2E96B00853596 /* Parse.framework in Frameworks */,
 				0224305D0DF34BA29501C49A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +105,8 @@
 		84A542C8F2A64CA2A94B828E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85FA668419F2E96B00853596 /* Parse.framework */,
+				85FA668219F2E96700853596 /* Bolts.framework */,
 				85FA668019F2E4A900853596 /* Accounts.framework */,
 				5BDFD2CE0E674E02ABCBEC97 /* libPods.a */,
 			);
@@ -446,6 +450,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ziyang0621/Downloads/parse-library-1.4.2",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GoalTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,6 +480,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ziyang0621/Downloads/parse-library-1.4.2",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GoalTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
