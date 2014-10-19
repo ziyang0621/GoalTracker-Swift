@@ -1,0 +1,5 @@
+*.xccheckout
+*.xcworkspace
+.DS_Store
+DerivedData/
+
