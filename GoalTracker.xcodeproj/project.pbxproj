@@ -11,6 +11,7 @@
 		85322CC919F45401002CA450 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CC819F45401002CA450 /* SidePanelViewController.swift */; };
 		85322CCB19F4547C002CA450 /* GoalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCA19F4547C002CA450 /* GoalListViewController.swift */; };
 		85322CCD19F454C8002CA450 /* GoalTrackerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */; };
+		85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCE19F4609E002CA450 /* AddGoalViewController.swift */; };
 		85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664319F2DE4C00853596 /* AppDelegate.swift */; };
 		85FA664619F2DE4C00853596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664519F2DE4C00853596 /* ViewController.swift */; };
 		85FA664919F2DE4C00853596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664719F2DE4C00853596 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		85322CC819F45401002CA450 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		85322CCA19F4547C002CA450 /* GoalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalListViewController.swift; sourceTree = "<group>"; };
 		85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTrackerExtensions.swift; sourceTree = "<group>"; };
+		85322CCE19F4609E002CA450 /* AddGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
 		85FA663E19F2DE4B00853596 /* GoalTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA664219F2DE4C00853596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85FA664319F2DE4C00853596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				85FA664319F2DE4C00853596 /* AppDelegate.swift */,
 				85FA664519F2DE4C00853596 /* ViewController.swift */,
 				85322CCA19F4547C002CA450 /* GoalListViewController.swift */,
+				85322CCE19F4609E002CA450 /* AddGoalViewController.swift */,
 				85322CC819F45401002CA450 /* SidePanelViewController.swift */,
 				85FA664719F2DE4C00853596 /* Main.storyboard */,
 				85FA666919F2E0DF00853596 /* GoalTracker-Bridging-Header.h */,
@@ -331,6 +334,7 @@
 				85322CC919F45401002CA450 /* SidePanelViewController.swift in Sources */,
 				85322CCB19F4547C002CA450 /* GoalListViewController.swift in Sources */,
 				85322CCD19F454C8002CA450 /* GoalTrackerExtensions.swift in Sources */,
+				85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */,
 				85FA664619F2DE4C00853596 /* ViewController.swift in Sources */,
 				85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */,
 			);

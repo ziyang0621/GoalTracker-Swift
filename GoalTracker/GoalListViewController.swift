@@ -14,6 +14,8 @@ class GoalListViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain, target: self, action: "onMenu")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "onAdd")
+        navigationItem.title = "Goal List"
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +26,12 @@ class GoalListViewController: UIViewController {
     func onMenu() {
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.sideMenuVC?.presentLeftMenuViewController()
+    }
+    
+    func onAdd() {
+        var addGoalVC = UIStoryboard.addGoalViewController()
+        var addNav = UINavigationController(rootViewController: addGoalVC!)
+        presentViewController(addNav, animated: true, completion: nil)
     }
     
 

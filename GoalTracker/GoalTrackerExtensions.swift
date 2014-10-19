@@ -46,6 +46,9 @@ extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("LoginViewController") as? ViewController
     }
     
+    class func addGoalViewController() -> AddGoalViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("AddGoalViewController") as? AddGoalViewController
+    }
     
 //    class func tweetsViewController() -> TweetsViewController? {
 //        return mainStoryboard().instantiateViewControllerWithIdentifier("TweetViewController") as? TweetsViewController
