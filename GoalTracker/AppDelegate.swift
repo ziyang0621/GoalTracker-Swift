@@ -8,18 +8,27 @@
 
 import UIKit
 
+let parseApplicationId = "jJ8uwIwbayhLySJ3hIlAd2S3AjmqG2kMYkET3eRz"
+let parseClientKey = "lubvDSEYJxGINkhLLMi0eMeasfmRipLgTcgx7J9r"
+let twitterConsumerKey = "NAjAe0Tx05FmMUq8nIG4DhT44"
+let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        Parse.setApplicationId("jJ8uwIwbayhLySJ3hIlAd2S3AjmqG2kMYkET3eRz", clientKey: "lubvDSEYJxGINkhLLMi0eMeasfmRipLgTcgx7J9r")
-        PFTwitterUtils.initializeWithConsumerKey("", consumerSecret: "")
+        Parse.setApplicationId(parseApplicationId, clientKey: parseClientKey)
+        PFTwitterUtils.initializeWithConsumerKey(twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+       // TwitterClient.sharedInstance.openURL(url)
         return true
     }
 
@@ -44,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
 
 }
