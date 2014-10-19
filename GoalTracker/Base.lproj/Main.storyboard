@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,10 +38,69 @@
             </objects>
             <point key="canvasLocation" x="1085" y="354"/>
         </scene>
+        <!--Goal List View Controller-->
+        <scene sceneID="cP9-Vu-3Qf">
+            <objects>
+                <viewController storyboardIdentifier="GoalListViewController" id="ffC-L8-Mla" customClass="GoalListViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yjN-Ns-k6L"/>
+                        <viewControllerLayoutGuide type="bottom" id="V0Z-Zu-WMX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CoF-aj-Kwq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qbs-Mf-Cvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="354"/>
+        </scene>
+        <!--Side Panel View Controller-->
+        <scene sceneID="dYM-Wg-SLP">
+            <objects>
+                <viewController storyboardIdentifier="SidePanelViewController" id="nar-ze-KXt" customClass="SidePanelViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RJh-1T-zpG"/>
+                        <viewControllerLayoutGuide type="bottom" id="cfa-Mj-Vp4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y0R-ma-HVG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-vz-gpf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="testCell" id="BKs-iX-GgO">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BKs-iX-GgO" id="rgk-ck-U1c">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OTY-vz-gpf" firstAttribute="leading" secondItem="y0R-ma-HVG" secondAttribute="leading" id="2tU-62-TQ2"/>
+                            <constraint firstAttribute="trailing" secondItem="OTY-vz-gpf" secondAttribute="trailing" id="BOM-mf-4Pi"/>
+                            <constraint firstAttribute="bottom" secondItem="OTY-vz-gpf" secondAttribute="bottom" id="Dh2-Hn-7ok"/>
+                            <constraint firstItem="OTY-vz-gpf" firstAttribute="top" secondItem="y0R-ma-HVG" secondAttribute="top" id="rVE-eb-iI1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="OTY-vz-gpf" id="LLu-XT-RIj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnQ-h4-Ye3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="1090"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynp-Bx-EyW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ieQ-gw-WDI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ieQ-gw-WDI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gs0-Ir-A6w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

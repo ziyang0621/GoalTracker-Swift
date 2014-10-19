@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RESideMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6AA9B15FE2C046BAAE63097D</key>
+		<key>93D0E0114735486188688EF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0B3814F595F4F95AFA29492</key>
+		<key>A4EF47716F2D4F068FF4C40E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1C334434D8A4E1BA799FC88</key>
 		<dict>
 			<key>primary</key>
 			<true/>

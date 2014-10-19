@@ -27,11 +27,14 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.0-alpha1)
   - MRProgress/Stopable (0.8.0-alpha1):
     - MRProgress/Helper
+  - RESideMenu (4.0.7)
 
 DEPENDENCIES:
   - MRProgress
+  - RESideMenu
 
 SPEC CHECKSUMS:
   MRProgress: a5a9f58939ac3e7458dd9a5d0c423c748788b046
+  RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
 
 COCOAPODS: 0.33.1

@@ -12,11 +12,16 @@ let parseApplicationId = "jJ8uwIwbayhLySJ3hIlAd2S3AjmqG2kMYkET3eRz"
 let parseClientKey = "lubvDSEYJxGINkhLLMi0eMeasfmRipLgTcgx7J9r"
 let twitterConsumerKey = "NAjAe0Tx05FmMUq8nIG4DhT44"
 let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
+let userDidLoginNotification = "userDidLoginNotification"
+let userDidLogoutNotificaiton = "userDidLogoutNotification"
+let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var sideMenuVC: RESideMenu?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,12 +29,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(parseApplicationId, clientKey: parseClientKey)
         PFTwitterUtils.initializeWithConsumerKey(twitterConsumerKey, consumerSecret: twitterConsumerSecret)
         
+        application.statusBarStyle = .LightContent
+        
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = titleDict
+        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().setBackgroundImage(UIColor.imageWithColor(kThemeColor), forBarMetrics: UIBarMetrics.Default)
+        UINavigationBar.appearance().shadowImage = UIColor.imageWithColor(kThemeColor)
+        UINavigationBar.appearance().translucent = true
+
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotificaiton, object: nil)
+        
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            println("is logged in")
+            userDidLogin()
+        } else {
+            println("is not logged in")
+        }
+        
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-       // TwitterClient.sharedInstance.openURL(url)
-        return true
+    func userDidLogin() {
+        var goalListVC = UIStoryboard.goalListViewController()
+        var goalListNav = UINavigationController(rootViewController: goalListVC!)
+        var sidePanelVC = UIStoryboard.sidePanelViewController()
+        
+        sideMenuVC = RESideMenu(contentViewController: goalListNav, leftMenuViewController: sidePanelVC, rightMenuViewController: nil)
+        
+        self.window?.rootViewController = sideMenuVC
+    }
+    
+    func userDidLogout() {
+        var loginVC = UIStoryboard.loginViewController()
+        window?.rootViewController = loginVC
     }
 
     func applicationWillResignActive(application: UIApplication) {
