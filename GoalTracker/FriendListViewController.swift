@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol FriendListViewControllerDelegate {
+    func selectedFriend(controller:FriendListViewController, friend:User)
+}
+
 class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
     var followers: [User]?
+    
+    var delegate :FriendListViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +30,10 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         followers = [User]()
         
-        fetchFriendList()
+        fetchFollowerList()
     }
     
-    func fetchFriendList() {
+    func fetchFollowerList() {
         var verify = NSURL(string: kFollowerListURL)
         var request = NSMutableURLRequest(URL: verify)
         PFTwitterUtils.twitter().signRequest(request)
@@ -58,6 +64,15 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         var friend = self.followers?[indexPath.row]
         cell.textLabel?.text = friend?.screenname
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let d = delegate {
+            if let friend = self.followers?[indexPath.row]  {
+                d.selectedFriend(self, friend: friend)
+            }
+        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
 

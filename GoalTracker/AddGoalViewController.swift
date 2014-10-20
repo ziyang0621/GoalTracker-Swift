@@ -11,9 +11,11 @@ import UIKit
 let kAddGoalTextFieldID = "AddGoalTextFieldCell"
 let kAddGoalLabelID = "AddGoalLabelCell"
 
-class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FriendListViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var selectedFriend: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +75,11 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
             var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalLabelID) as AddGoalLabelCell
-            cell.textLabel?.text = "Select Friend"
+            if selectedFriend != nil {
+                cell.textLabel?.text = selectedFriend?.screenname
+            } else {
+                cell.textLabel?.text = "Select Friend"
+            }
             cell.textLabel?.textColor = UIColor.grayColor()
             cell.accessoryType = .DisclosureIndicator
             
@@ -94,8 +100,16 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 4 {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            navigationController?.pushViewController(UIStoryboard.friendListViewController()!, animated: true)
+            var friendListVC = UIStoryboard.friendListViewController()!
+            friendListVC.delegate = self
+            navigationController?.pushViewController(friendListVC, animated: true)
         }
+    }
+    
+    func selectedFriend(controller: FriendListViewController, friend: User) {
+        selectedFriend = friend
+        var indexPath = NSIndexPath(forRow: 0, inSection: 4)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation:.None)
     }
 
     /*
