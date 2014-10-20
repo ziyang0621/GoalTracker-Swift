@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  GoalTracker
@@ -15,6 +16,7 @@ let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotificaiton = "userDidLogoutNotification"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
+let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

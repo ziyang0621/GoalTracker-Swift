@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0224305D0DF34BA29501C49A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDFD2CE0E674E02ABCBEC97 /* libPods.a */; };
+		850F7BE419F4A0B6006E16A0 /* AddGoalTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850F7BE219F4A0B6006E16A0 /* AddGoalTextFieldCell.swift */; };
+		850F7BE519F4A0B6006E16A0 /* AddGoalTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850F7BE319F4A0B6006E16A0 /* AddGoalTextFieldCell.xib */; };
+		850F7BEC19F4A5DF006E16A0 /* AddGoalLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850F7BEA19F4A5DF006E16A0 /* AddGoalLabelCell.swift */; };
+		850F7BED19F4A5DF006E16A0 /* AddGoalLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 850F7BEB19F4A5DF006E16A0 /* AddGoalLabelCell.xib */; };
 		85322CC919F45401002CA450 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CC819F45401002CA450 /* SidePanelViewController.swift */; };
 		85322CCB19F4547C002CA450 /* GoalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCA19F4547C002CA450 /* GoalListViewController.swift */; };
 		85322CCD19F454C8002CA450 /* GoalTrackerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */; };
@@ -46,6 +50,10 @@
 /* Begin PBXFileReference section */
 		5BDFD2CE0E674E02ABCBEC97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A962FBC4404AC0B6E2F1E1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		850F7BE219F4A0B6006E16A0 /* AddGoalTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalTextFieldCell.swift; sourceTree = "<group>"; };
+		850F7BE319F4A0B6006E16A0 /* AddGoalTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGoalTextFieldCell.xib; sourceTree = "<group>"; };
+		850F7BEA19F4A5DF006E16A0 /* AddGoalLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalLabelCell.swift; sourceTree = "<group>"; };
+		850F7BEB19F4A5DF006E16A0 /* AddGoalLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGoalLabelCell.xib; sourceTree = "<group>"; };
 		85322CC819F45401002CA450 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		85322CCA19F4547C002CA450 /* GoalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalListViewController.swift; sourceTree = "<group>"; };
 		85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTrackerExtensions.swift; sourceTree = "<group>"; };
@@ -161,6 +169,10 @@
 				85322CCA19F4547C002CA450 /* GoalListViewController.swift */,
 				85322CCE19F4609E002CA450 /* AddGoalViewController.swift */,
 				85322CC819F45401002CA450 /* SidePanelViewController.swift */,
+				850F7BE219F4A0B6006E16A0 /* AddGoalTextFieldCell.swift */,
+				850F7BE319F4A0B6006E16A0 /* AddGoalTextFieldCell.xib */,
+				850F7BEA19F4A5DF006E16A0 /* AddGoalLabelCell.swift */,
+				850F7BEB19F4A5DF006E16A0 /* AddGoalLabelCell.xib */,
 				85FA664719F2DE4C00853596 /* Main.storyboard */,
 				85FA666919F2E0DF00853596 /* GoalTracker-Bridging-Header.h */,
 				85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */,
@@ -279,7 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				85FA664919F2DE4C00853596 /* Main.storyboard in Resources */,
+				850F7BED19F4A5DF006E16A0 /* AddGoalLabelCell.xib in Resources */,
 				85FA664E19F2DE4C00853596 /* LaunchScreen.xib in Resources */,
+				850F7BE519F4A0B6006E16A0 /* AddGoalTextFieldCell.xib in Resources */,
 				85FA664B19F2DE4C00853596 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,8 +347,10 @@
 			files = (
 				85322CC919F45401002CA450 /* SidePanelViewController.swift in Sources */,
 				85322CCB19F4547C002CA450 /* GoalListViewController.swift in Sources */,
+				850F7BE419F4A0B6006E16A0 /* AddGoalTextFieldCell.swift in Sources */,
 				85322CCD19F454C8002CA450 /* GoalTrackerExtensions.swift in Sources */,
 				85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */,
+				850F7BEC19F4A5DF006E16A0 /* AddGoalLabelCell.swift in Sources */,
 				85FA664619F2DE4C00853596 /* ViewController.swift in Sources */,
 				85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */,
 			);

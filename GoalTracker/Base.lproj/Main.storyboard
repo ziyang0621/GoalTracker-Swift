@@ -108,12 +108,27 @@
                     <view key="view" contentMode="scaleToFill" id="dln-FH-WSL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NpE-8z-AEl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NpE-8z-AEl" firstAttribute="leading" secondItem="dln-FH-WSL" secondAttribute="leading" id="bGT-Ep-qkB"/>
+                            <constraint firstAttribute="bottom" secondItem="NpE-8z-AEl" secondAttribute="bottom" id="qri-Hz-Ae9"/>
+                            <constraint firstAttribute="trailing" secondItem="NpE-8z-AEl" secondAttribute="trailing" id="utn-mc-s5j"/>
+                            <constraint firstItem="NpE-8z-AEl" firstAttribute="top" secondItem="dln-FH-WSL" secondAttribute="top" id="vvw-tE-mrE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="NpE-8z-AEl" id="0zK-ol-eyP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Eb-r2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1810" y="1090"/>
+            <point key="canvasLocation" x="1780" y="1090"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynp-Bx-EyW">
