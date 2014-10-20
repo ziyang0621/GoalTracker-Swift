@@ -50,15 +50,7 @@ extension UIStoryboard {
         return mainStoryboard().instantiateViewControllerWithIdentifier("AddGoalViewController") as? AddGoalViewController
     }
     
-//    class func tweetsViewController() -> TweetsViewController? {
-//        return mainStoryboard().instantiateViewControllerWithIdentifier("TweetViewController") as? TweetsViewController
-//    }
-//    
-//    class func profileViewController() -> ProfileViewController? {
-//        return mainStoryboard().instantiateViewControllerWithIdentifier("ProfileViewController") as? ProfileViewController
-//    }
-//    
-//    class func mentionViewController() -> MentionViewController? {
-//        return mainStoryboard().instantiateViewControllerWithIdentifier("MentionViewController") as? MentionViewController
-//    }
+    class func friendListViewController() -> FriendListViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("FriendListViewController") as? FriendListViewController
+    }
 }

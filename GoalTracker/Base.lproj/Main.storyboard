@@ -130,6 +130,47 @@
             </objects>
             <point key="canvasLocation" x="1780" y="1090"/>
         </scene>
+        <!--Friend List View Controller-->
+        <scene sceneID="fCz-e3-NeH">
+            <objects>
+                <viewController storyboardIdentifier="FriendListViewController" id="5eO-pu-hYR" customClass="FriendListViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YyG-wQ-teo"/>
+                        <viewControllerLayoutGuide type="bottom" id="s53-Ea-NjX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Sz-kV-6As">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mLZ-TK-mGh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="ewu-fJ-XkH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ewu-fJ-XkH" id="Tuf-9Q-K3I">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mLZ-TK-mGh" firstAttribute="leading" secondItem="0Sz-kV-6As" secondAttribute="leading" id="Guc-i9-nD0"/>
+                            <constraint firstAttribute="bottom" secondItem="mLZ-TK-mGh" secondAttribute="bottom" id="p2e-9m-9mP"/>
+                            <constraint firstAttribute="trailing" secondItem="mLZ-TK-mGh" secondAttribute="trailing" id="sgw-Iu-f10"/>
+                            <constraint firstItem="mLZ-TK-mGh" firstAttribute="top" secondItem="0Sz-kV-6As" secondAttribute="top" id="uaC-JS-UKI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="mLZ-TK-mGh" id="i9K-dw-uwC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5he-gV-rbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2462" y="1090"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ynp-Bx-EyW">
             <objects>

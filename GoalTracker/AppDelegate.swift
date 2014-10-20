@@ -15,6 +15,7 @@ let twitterConsumerKey = "NAjAe0Tx05FmMUq8nIG4DhT44"
 let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotificaiton = "userDidLogoutNotification"
+let kFollowerListURL = "https://api.twitter.com/1.1/followers/list.json"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
 
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             println("is not logged in")
         }
-        
+                
         return true
     }
     

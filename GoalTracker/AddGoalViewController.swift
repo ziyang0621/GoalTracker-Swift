@@ -91,7 +91,12 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         return tableView.dequeueReusableCellWithIdentifier(kAddGoalTextFieldID) as AddGoalTextFieldCell
     }
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 4 {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            navigationController?.pushViewController(UIStoryboard.friendListViewController()!, animated: true)
+        }
+    }
 
     /*
     // MARK: - Navigation
