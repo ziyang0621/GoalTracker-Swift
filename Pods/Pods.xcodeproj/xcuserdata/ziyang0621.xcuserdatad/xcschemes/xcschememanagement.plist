@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RSDayFlow.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>93D0E0114735486188688EF0</key>
+		<key>130C9CF4AFE34263950A8357</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4EF47716F2D4F068FF4C40E</key>
+		<key>6DC50F339BD24B87B7F6814B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C1C334434D8A4E1BA799FC88</key>
+		<key>C5126D03A7BA45B4A8894C89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB4D071F5ABA4CD6929A66BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -100,9 +100,8 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tappedCheckbox(cell: TaskCell, isCompleted: Bool, index: Int) {
         var task = taskArray?[index]
-        var objID = task?.objectId
         var query = PFQuery(className: "Task")
-        query.getObjectInBackgroundWithId(objID, block: {
+        query.getObjectInBackgroundWithId(task?.objectId, block: {
             (object: PFObject!, error: NSError!) -> Void in
             if error == nil {
                 object["isCompleted"] = isCompleted

@@ -28,13 +28,16 @@ PODS:
   - MRProgress/Stopable (0.8.0-alpha1):
     - MRProgress/Helper
   - RESideMenu (4.0.7)
+  - RSDayFlow (0.6.1)
 
 DEPENDENCIES:
   - MRProgress
   - RESideMenu
+  - RSDayFlow
 
 SPEC CHECKSUMS:
   MRProgress: a5a9f58939ac3e7458dd9a5d0c423c748788b046
   RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
+  RSDayFlow: fac5425147978e54eac04106c0cc4f5221e0a9fa
 
 COCOAPODS: 0.33.1
