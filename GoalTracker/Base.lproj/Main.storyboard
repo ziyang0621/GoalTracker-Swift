@@ -49,8 +49,24 @@
                     <view key="view" contentMode="scaleToFill" id="CoF-aj-Kwq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8ne-cu-ZhN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8ne-cu-ZhN" firstAttribute="top" secondItem="CoF-aj-Kwq" secondAttribute="top" id="2I3-iq-P85"/>
+                            <constraint firstItem="8ne-cu-ZhN" firstAttribute="top" secondItem="CoF-aj-Kwq" secondAttribute="top" id="dkU-3M-HqV"/>
+                            <constraint firstAttribute="bottom" secondItem="8ne-cu-ZhN" secondAttribute="bottom" id="mVN-AN-PVG"/>
+                            <constraint firstItem="8ne-cu-ZhN" firstAttribute="leading" secondItem="CoF-aj-Kwq" secondAttribute="leading" id="qFm-c5-rGb"/>
+                            <constraint firstAttribute="trailing" secondItem="8ne-cu-ZhN" secondAttribute="trailing" id="rjb-gC-eJd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="8ne-cu-ZhN" id="Nwb-c3-DVG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbs-Mf-Cvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,12 +17,6 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var selectedFriend: User?
     
-    let dateFormatter = NSDateFormatter()
-    
-    let timeFormatter = NSDateFormatter()
-    
-    var fullFormatter = NSDateFormatter()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,11 +30,6 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.registerNib(UINib(nibName: "AddGoalTextFieldCell", bundle: nil), forCellReuseIdentifier: kAddGoalTextFieldID)
         tableView.registerNib(UINib(nibName: "AddGoalLabelCell", bundle: nil), forCellReuseIdentifier: kAddGoalLabelID)
-        
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        timeFormatter.dateFormat = "hh:mm a"
-        
-        fullFormatter.dateFormat = "MM/dd/yyyy' 'hh:mm a"
 
 //        var date = NSDate()
 //        println(testFormatter.stringFromDate(NSDate.beginningOfDay(date)))

@@ -18,6 +18,9 @@ let userDidLogoutNotificaiton = "userDidLogoutNotification"
 let kFollowerListURL = "https://api.twitter.com/1.1/followers/list.json"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
+let dateFormatter = NSDateFormatter()
+let timeFormatter = NSDateFormatter()
+let fullFormatter = NSDateFormatter()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,12 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             println("is not logged in")
         }
+        
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        timeFormatter.dateFormat = "hh:mm a"
+        fullFormatter.dateFormat = "MM/dd/yyyy' 'hh:mm a"
                 
         return true
     }
     
     func userDidLogin() {
         var goalListVC = UIStoryboard.goalListViewController()
+        goalListVC?.listDate = NSDate()
         var goalListNav = UINavigationController(rootViewController: goalListVC!)
         var sidePanelVC = UIStoryboard.sidePanelViewController()
         
