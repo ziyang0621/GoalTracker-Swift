@@ -45,7 +45,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
                 println(user.screenname)
                 self.followers?.append(user)
             }
-            println(self.followers?.count)
             self.tableView.reloadData()
         })
     }

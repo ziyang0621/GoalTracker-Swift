@@ -17,10 +17,13 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var selectedFriend: User?
     
+    let formatter = NSDateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "onCancel")
+         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.Plain, target: self, action: "onCreate")
         navigationItem.title = "Add Goal"
         
         tableView.delegate = self
@@ -29,14 +32,25 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.registerNib(UINib(nibName: "AddGoalTextFieldCell", bundle: nil), forCellReuseIdentifier: kAddGoalTextFieldID)
         tableView.registerNib(UINib(nibName: "AddGoalLabelCell", bundle: nil), forCellReuseIdentifier: kAddGoalLabelID)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func onCancel() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func onCreate() {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -75,26 +89,22 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
             var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalLabelID) as AddGoalLabelCell
-            if selectedFriend != nil {
-                cell.textLabel?.text = selectedFriend?.screenname
-            } else {
-                cell.textLabel?.text = "Select Friend"
-            }
-            cell.textLabel?.textColor = UIColor.grayColor()
-            cell.accessoryType = .DisclosureIndicator
-            
-            var upperDivider = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 1))
-            upperDivider.backgroundColor = kCellDividerColor
-            var lowerDivider = UIView(frame: CGRectMake(0, CGRectGetMaxY(cell.frame), CGRectGetWidth(tableView.frame), 1))
-            lowerDivider.backgroundColor = kCellDividerColor
-            
-            cell.addSubview(upperDivider)
-            cell.addSubview(lowerDivider)
-            cell.bringSubviewToFront(upperDivider)
-            cell.bringSubviewToFront(lowerDivider)
+            cell.textLabel?.text = selectedFriend?.screenname ?? "select friend"
             return cell
         }
-        return tableView.dequeueReusableCellWithIdentifier(kAddGoalTextFieldID) as AddGoalTextFieldCell
+        if indexPath.section != 0 {
+            var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalTextFieldID) as AddGoalTextFieldCell
+            if indexPath.section == 3 {
+                cell.textFieldType = .TimePicker
+            } else {
+                cell.textFieldType = .DatePicker
+            }
+            return cell
+        } else {
+            var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalTextFieldID) as AddGoalTextFieldCell
+            cell.textFieldType = .Regular
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
