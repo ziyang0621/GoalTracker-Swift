@@ -20,6 +20,8 @@ class AddGoalTextFieldCell: UITableViewCell {
     
     var textFieldType: TextFieldType!
     
+    var datePickerView: UIDatePicker!
+    
     let formatter = NSDateFormatter()
     
     override func awakeFromNib() {
@@ -42,14 +44,19 @@ class AddGoalTextFieldCell: UITableViewCell {
     
     func resignTextField() {
         addGoalTextField.resignFirstResponder()
+        if textFieldType! != .Regular {
+            addGoalTextField.text = formatter.stringFromDate(datePickerView.date)
+        }
     }
     
     func setUpPicker() {
-        var datePickerView = UIDatePicker()
+        datePickerView = UIDatePicker()
         if textFieldType! == .DatePicker {
             datePickerView.datePickerMode = .Date
+            formatter.dateFormat = "MM/dd/yyyy"
         } else if textFieldType! == .TimePicker {
             datePickerView.datePickerMode = .Time
+            formatter.dateFormat = "hh:mm a"
         }
         datePickerView.backgroundColor = UIColor.whiteColor()
         addGoalTextField.inputView = datePickerView
@@ -57,11 +64,6 @@ class AddGoalTextFieldCell: UITableViewCell {
     }
     
     func handleDateChanged(datePicker: UIDatePicker) {
-        if textFieldType! == .DatePicker {
-            formatter.dateFormat = "MM/dd/yyyy"
-        } else if textFieldType! == .TimePicker {
-            formatter.dateFormat = "hh:mm a"
-        }
         addGoalTextField.text = formatter.stringFromDate(datePicker.date)
     }
     

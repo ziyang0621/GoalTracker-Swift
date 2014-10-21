@@ -7,6 +7,23 @@
 //
 import Foundation
 
+extension NSDate {
+    class func beginningOfDay(date: NSDate) -> NSDate {
+        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var comps = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
+        return calendar.dateFromComponents(comps)!
+    }
+    
+    class func endOfDay(date: NSDate) -> NSDate {
+        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var comps = NSDateComponents()
+        comps.day = 1
+        var newDate = calendar.dateByAddingComponents(comps, toDate: NSDate.beginningOfDay(date), options: nil)
+        newDate =  newDate?.dateByAddingTimeInterval(-1)
+        return newDate!
+    }
+}
+
 extension UIColor {
     class func imageWithColor(color :UIColor) -> UIImage {
         var rect = CGRectMake(0, 0, 1, 1)

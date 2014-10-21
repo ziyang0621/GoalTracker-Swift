@@ -17,13 +17,17 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var selectedFriend: User?
     
-    let formatter = NSDateFormatter()
+    let dateFormatter = NSDateFormatter()
     
+    let timeFormatter = NSDateFormatter()
+    
+    var fullFormatter = NSDateFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "onCancel")
-         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.Plain, target: self, action: "onCreate")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: UIBarButtonItemStyle.Plain, target: self, action: "onCreate")
         navigationItem.title = "Add Goal"
         
         tableView.delegate = self
@@ -33,6 +37,14 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.registerNib(UINib(nibName: "AddGoalTextFieldCell", bundle: nil), forCellReuseIdentifier: kAddGoalTextFieldID)
         tableView.registerNib(UINib(nibName: "AddGoalLabelCell", bundle: nil), forCellReuseIdentifier: kAddGoalLabelID)
         
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        timeFormatter.dateFormat = "hh:mm a"
+        
+        fullFormatter.dateFormat = "MM/dd/yyyy' 'hh:mm a"
+
+//        var date = NSDate()
+//        println(testFormatter.stringFromDate(NSDate.beginningOfDay(date)))
+//        println(testFormatter.stringFromDate(NSDate.endOfDay(date)))
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -50,6 +62,74 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func onCreate() {
+       
+        var descriptionCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as AddGoalTextFieldCell
+        var startDateCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as AddGoalTextFieldCell
+        var goalDateCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as AddGoalTextFieldCell
+        var remindCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 3)) as AddGoalTextFieldCell
+        var friendCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 4)) as AddGoalLabelCell
+        
+        var remindTime = timeFormatter.dateFromString(remindCell.addGoalTextField.text)
+        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var remindComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: remindTime!)
+        var hour = remindComponents.hour
+        var min = remindComponents.minute
+        
+        var startDate = dateFormatter.dateFromString(startDateCell.addGoalTextField.text)
+        var startComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: startDate!)
+        startComponents.hour = hour
+        startComponents.minute = min
+        var newStartDate = calendar.dateFromComponents(startComponents)
+        
+        var goalDate = dateFormatter.dateFromString(goalDateCell.addGoalTextField.text)
+        var goalComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: goalDate!)
+        goalComponents.hour = hour
+        goalComponents.minute = min
+        var newGoalDate = calendar.dateFromComponents(goalComponents)
+        
+        println(fullFormatter.stringFromDate(remindTime!))
+        println(fullFormatter.stringFromDate(newStartDate!))
+        println(fullFormatter.stringFromDate(newGoalDate!))
+        
+        var goal = PFObject(className: "Goal")
+        goal["description"] = descriptionCell.addGoalTextField.text
+        goal["startDate"] = newStartDate
+        goal["goalDate"] = newGoalDate
+        goal["friend"] = NSJSONSerialization.dataWithJSONObject(selectedFriend!.dictionary, options: nil, error:nil)
+        goal["isCompleted"] = false
+        goal.saveInBackgroundWithBlock {
+            (succeeded: Bool, error: NSError!) -> Void in
+            if error == nil {
+                if succeeded {
+                    println("saved goal")
+                }
+            }
+        }
+        
+        var taskArray = [PFObject]()
+        
+        var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var comps = NSDateComponents()
+        comps.day = 1
+        
+        var currentDate = newStartDate
+        while newGoalDate?.compare(currentDate!) != NSComparisonResult.OrderedAscending {
+            var task = PFObject(className: "Task")
+            task["description"] = descriptionCell.addGoalTextField.text
+            task["taskDate"] = currentDate
+            task["friend"] = NSJSONSerialization.dataWithJSONObject(selectedFriend!.dictionary, options: nil, error:nil)
+            task["isCompleted"] = false
+            task["parent"] = goal
+            taskArray.append(task)
+            
+            println("loop " + fullFormatter.stringFromDate(currentDate!))
+            currentDate = currentCalendar.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
+        }
+        
+        PFObject.saveAllInBackground(taskArray, block: {
+            (succeeded: Bool, error: NSError!) -> Void in
+            println("save all tasks")
+        })
         
         dismissViewControllerAnimated(true, completion: nil)
     }
