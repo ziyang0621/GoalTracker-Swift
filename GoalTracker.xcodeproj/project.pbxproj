@@ -20,6 +20,7 @@
 		85583AB219F4D55400F90652 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85583AB119F4D55400F90652 /* User.swift */; };
 		85A733BA19F6DF2D00B8CF8A /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A733B819F6DF2D00B8CF8A /* TaskCell.swift */; };
 		85A733BB19F6DF2D00B8CF8A /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A733B919F6DF2D00B8CF8A /* TaskCell.xib */; };
+		85A733BD19F71D7000B8CF8A /* GoalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */; };
 		85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664319F2DE4C00853596 /* AppDelegate.swift */; };
 		85FA664619F2DE4C00853596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664519F2DE4C00853596 /* ViewController.swift */; };
 		85FA664919F2DE4C00853596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664719F2DE4C00853596 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		85583AB119F4D55400F90652 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		85A733B819F6DF2D00B8CF8A /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		85A733B919F6DF2D00B8CF8A /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCalendarViewController.swift; sourceTree = "<group>"; };
 		85FA663E19F2DE4B00853596 /* GoalTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA664219F2DE4C00853596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85FA664319F2DE4C00853596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				85583AB119F4D55400F90652 /* User.swift */,
 				85FA664519F2DE4C00853596 /* ViewController.swift */,
 				85322CCA19F4547C002CA450 /* GoalListViewController.swift */,
+				85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */,
 				85322CCE19F4609E002CA450 /* AddGoalViewController.swift */,
 				85583AAF19F4C1A800F90652 /* FriendListViewController.swift */,
 				85322CC819F45401002CA450 /* SidePanelViewController.swift */,
@@ -368,6 +371,7 @@
 				85A733BA19F6DF2D00B8CF8A /* TaskCell.swift in Sources */,
 				85FA664619F2DE4C00853596 /* ViewController.swift in Sources */,
 				85583AB219F4D55400F90652 /* User.swift in Sources */,
+				85A733BD19F71D7000B8CF8A /* GoalCalendarViewController.swift in Sources */,
 				85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

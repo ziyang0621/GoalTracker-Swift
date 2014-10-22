@@ -11,11 +11,17 @@ import UIKit
 let kAddGoalTextFieldID = "AddGoalTextFieldCell"
 let kAddGoalLabelID = "AddGoalLabelCell"
 
+protocol AddGoalViewControllerDelegate {
+    func addedGoal(controller: AddGoalViewController)
+}
+
 class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FriendListViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var selectedFriend: User?
+    
+    var delegate: AddGoalViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +37,6 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.registerNib(UINib(nibName: "AddGoalTextFieldCell", bundle: nil), forCellReuseIdentifier: kAddGoalTextFieldID)
         tableView.registerNib(UINib(nibName: "AddGoalLabelCell", bundle: nil), forCellReuseIdentifier: kAddGoalLabelID)
 
-//        var date = NSDate()
-//        println(testFormatter.stringFromDate(NSDate.beginningOfDay(date)))
-//        println(testFormatter.stringFromDate(NSDate.endOfDay(date)))
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -91,36 +94,40 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
             if error == nil {
                 if succeeded {
                     println("saved goal")
+                    
+                    var taskArray = [PFObject]()
+                    
+                    var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+                    var comps = NSDateComponents()
+                    comps.day = 1
+                    
+                    var currentDate = newStartDate
+                    while newGoalDate?.compare(currentDate!) != NSComparisonResult.OrderedAscending {
+                        var task = PFObject(className: "Task")
+                        task["description"] = descriptionCell.addGoalTextField.text
+                        task["taskDate"] = currentDate
+                        task["friend"] = NSJSONSerialization.dataWithJSONObject(self.selectedFriend!.dictionary, options: nil, error:nil)
+                        task["isCompleted"] = false
+                        task["parent"] = goal
+                        taskArray.append(task)
+                        
+                        println("loop " + fullFormatter.stringFromDate(currentDate!))
+                        currentDate = currentCalendar.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
+                    }
+                    
+                    PFObject.saveAllInBackground(taskArray, block: {
+                        (succeeded: Bool, error: NSError!) -> Void in
+                        println("save all tasks")
+                        if let d = self.delegate {
+                            d.addedGoal(self)
+                        }
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    })
                 }
             }
         }
         
-        var taskArray = [PFObject]()
         
-        var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        var comps = NSDateComponents()
-        comps.day = 1
-        
-        var currentDate = newStartDate
-        while newGoalDate?.compare(currentDate!) != NSComparisonResult.OrderedAscending {
-            var task = PFObject(className: "Task")
-            task["description"] = descriptionCell.addGoalTextField.text
-            task["taskDate"] = currentDate
-            task["friend"] = NSJSONSerialization.dataWithJSONObject(selectedFriend!.dictionary, options: nil, error:nil)
-            task["isCompleted"] = false
-            task["parent"] = goal
-            taskArray.append(task)
-            
-            println("loop " + fullFormatter.stringFromDate(currentDate!))
-            currentDate = currentCalendar.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
-        }
-        
-        PFObject.saveAllInBackground(taskArray, block: {
-            (succeeded: Bool, error: NSError!) -> Void in
-            println("save all tasks")
-        })
-        
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

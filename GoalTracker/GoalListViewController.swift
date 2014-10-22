@@ -10,7 +10,7 @@ import UIKit
 
 let kTaskCellID = "TaskCell"
 
-class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate {
+class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate, AddGoalViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,6 +52,21 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+    
+    func loadTasksForCalender(index :Int, completion: (objects: [AnyObject]?, error: NSError?) ->()) {
+        var task = taskArray![index]
+        var parent = task["parent"] as? PFObject
+        var query = PFQuery(className: "Task")
+        query.whereKey("parent", equalTo: parent)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                completion(objects: objects, error: nil)
+            } else {
+                completion(objects: nil, error: error)
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,6 +80,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func onAdd() {
         var addGoalVC = UIStoryboard.addGoalViewController()
+        addGoalVC?.delegate = self
         var addNav = UINavigationController(rootViewController: addGoalVC!)
         presentViewController(addNav, animated: true, completion: nil)
     }
@@ -98,24 +114,35 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    func tappedCheckbox(cell: TaskCell, isCompleted: Bool, index: Int) {
-        var task = taskArray?[index]
-        var query = PFQuery(className: "Task")
-        query.getObjectInBackgroundWithId(task?.objectId, block: {
-            (object: PFObject!, error: NSError!) -> Void in
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var calendarVC = UIStoryboard.goalCalendarViewController()
+        var backBarButton = UIBarButtonItem(title: "Back", style: .Bordered, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButton
+        loadTasksForCalender(indexPath.row, completion: {
+            (objects, error) -> () in
             if error == nil {
-                object["isCompleted"] = isCompleted
-                object.saveInBackgroundWithBlock({
-                    (succeeded: Bool, error: NSError!) -> Void in
-                    if error == nil {
-                        println("updated object")
-                        var indexPath = NSIndexPath(forRow: index, inSection: 0)
-                        self.taskArray?[index] = object
-                        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-                    }
-                })
+                calendarVC?.goalTasks = objects as? [PFObject]
+                self.navigationController?.pushViewController(calendarVC!, animated: true)
             }
         })
+    }
+    
+    func tappedCheckbox(cell: TaskCell, isCompleted: Bool, index: Int) {
+        var object = self.taskArray?[index]
+        object?["isCompleted"] = isCompleted
+        object?.saveInBackgroundWithBlock({
+            (succeeded: Bool, error: NSError!) -> Void in
+            if error == nil {
+                println("updated object")
+                var indexPath = NSIndexPath(forRow: index, inSection: 0)
+                self.taskArray?[index] = object!
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            }
+        })
+    }
+    
+    func addedGoal(controller: AddGoalViewController) {
+        loadTasks()
     }
     
 

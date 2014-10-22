@@ -72,6 +72,54 @@
             </objects>
             <point key="canvasLocation" x="1780" y="354"/>
         </scene>
+        <!--Goal Calendar View Controller-->
+        <scene sceneID="d2n-Jz-4Q1">
+            <objects>
+                <viewController storyboardIdentifier="GoalCalendarViewController" id="jbq-Da-hl5" customClass="GoalCalendarViewController" customModule="GoalTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Etl-kj-ENp"/>
+                        <viewControllerLayoutGuide type="bottom" id="hOi-O2-Qoi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t9o-j9-5Fw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vgv-Bq-scT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="y6U-VE-En7">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarCell" id="JAY-Yc-RNi">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JAY-Yc-RNi" id="NMN-2H-mT5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vgv-Bq-scT" firstAttribute="top" secondItem="t9o-j9-5Fw" secondAttribute="top" id="32t-yo-xQe"/>
+                            <constraint firstAttribute="trailing" secondItem="Vgv-Bq-scT" secondAttribute="trailing" id="3IF-wt-ltE"/>
+                            <constraint firstItem="Vgv-Bq-scT" firstAttribute="top" secondItem="t9o-j9-5Fw" secondAttribute="top" id="Q7n-sf-ZhB"/>
+                            <constraint firstItem="Vgv-Bq-scT" firstAttribute="leading" secondItem="t9o-j9-5Fw" secondAttribute="leading" id="d4z-kA-l3J"/>
+                            <constraint firstAttribute="bottom" secondItem="Vgv-Bq-scT" secondAttribute="bottom" id="gT6-YD-zjs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarContainerView" destination="y6U-VE-En7" id="S8g-SU-Twh"/>
+                        <outlet property="tableView" destination="Vgv-Bq-scT" id="00b-Qz-bnj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSA-GB-md6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424" y="358"/>
+        </scene>
         <!--Side Panel View Controller-->
         <scene sceneID="dYM-Wg-SLP">
             <objects>

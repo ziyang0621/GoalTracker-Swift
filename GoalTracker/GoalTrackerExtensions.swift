@@ -22,6 +22,30 @@ extension NSDate {
         newDate =  newDate?.dateByAddingTimeInterval(-1)
         return newDate!
     }
+    
+    func sameDay(date: NSDate) -> Bool {
+//        NSCalendar *cal = [NSCalendar currentCalendar];
+//        NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+//        NSDate *today = [cal dateFromComponents:components];
+//        components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:aDate];
+//        NSDate *otherDate = [cal dateFromComponents:components];
+//        
+//        if([today isEqualToDate:otherDate]) {
+//            //do stuff
+//        }
+        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var compsOne = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
+        var newDate = calendar.dateFromComponents(compsOne)
+        
+        var compsTwo = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: self)
+        var newSelf = calendar.dateFromComponents(compsTwo)
+        
+        var result = newDate?.isEqualToDate(newSelf!)
+        if  result! {
+            return true
+        }
+        return false
+    }
 }
 
 extension UIColor {
@@ -86,5 +110,9 @@ extension UIStoryboard {
     
     class func friendListViewController() -> FriendListViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("FriendListViewController") as? FriendListViewController
+    }
+    
+    class func goalCalendarViewController() -> GoalCalendarViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("GoalCalendarViewController") as? GoalCalendarViewController
     }
 }
