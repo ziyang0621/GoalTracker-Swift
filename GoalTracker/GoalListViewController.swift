@@ -10,7 +10,7 @@ import UIKit
 
 let kTaskCellID = "TaskCell"
 
-class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate, AddGoalViewControllerDelegate {
+class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,11 +20,18 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     
     var refreshControl = UIRefreshControl()
     
+    var fromCalendarView = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain, target: self, action: "onMenu")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "onAdd")
+        if !fromCalendarView {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain, target: self, action: "onMenu")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "onAdd")
+        } else {
+             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "onClose")
+        }
+        
         navigationItem.title = dateFormatter.stringFromDate(listDate!)
         
         tableView.dataSource = self
@@ -33,16 +40,41 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: kTaskCellID)
         
-        refreshControl.addTarget(self, action: "loadTasks", forControlEvents: .ValueChanged)
+        if !fromCalendarView {
+            refreshControl.addTarget(self, action: "loadTasks", forControlEvents: .ValueChanged)
+        } else {
+            refreshControl.addTarget(self, action: "loadSingleTask", forControlEvents: .ValueChanged)
+        }
         tableView.addSubview(refreshControl)
         
-        loadTasks()
+           }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !fromCalendarView {
+            loadTasks()
+        }
     }
     
     func loadTasks() {
         var query = PFQuery(className: "Task")
         query.whereKey("taskDate", greaterThanOrEqualTo: NSDate.beginningOfDay(listDate!))
         query.whereKey("taskDate", lessThanOrEqualTo: NSDate.endOfDay(listDate!))
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.taskArray = objects as? [PFObject]
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
+    func loadSingleTask() {
+        var task = taskArray![0]
+        var query = PFQuery(className: "Task")
+        query.whereKey("objectId", equalTo: task.objectId)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
@@ -80,9 +112,13 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func onAdd() {
         var addGoalVC = UIStoryboard.addGoalViewController()
-        addGoalVC?.delegate = self
         var addNav = UINavigationController(rootViewController: addGoalVC!)
         presentViewController(addNav, animated: true, completion: nil)
+    }
+    
+    func onClose() {
+        dismissViewControllerAnimated(true, completion: nil)
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,16 +151,18 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var calendarVC = UIStoryboard.goalCalendarViewController()
-        var backBarButton = UIBarButtonItem(title: "Back", style: .Bordered, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backBarButton
-        loadTasksForCalender(indexPath.row, completion: {
-            (objects, error) -> () in
-            if error == nil {
-                calendarVC?.goalTasks = objects as? [PFObject]
-                self.navigationController?.pushViewController(calendarVC!, animated: true)
-            }
-        })
+        if !fromCalendarView {
+            var calendarVC = UIStoryboard.goalCalendarViewController()
+            var backBarButton = UIBarButtonItem(title: "Back", style: .Bordered, target: nil, action: nil)
+            navigationItem.backBarButtonItem = backBarButton
+            loadTasksForCalender(indexPath.row, completion: {
+                (objects, error) -> () in
+                if error == nil {
+                    calendarVC?.goalTasks = objects as? [PFObject]
+                    self.navigationController?.pushViewController(calendarVC!, animated: true)
+                }
+            })
+        }
     }
     
     func tappedCheckbox(cell: TaskCell, isCompleted: Bool, index: Int) {
@@ -139,10 +177,6 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
             }
         })
-    }
-    
-    func addedGoal(controller: AddGoalViewController) {
-        loadTasks()
     }
     
 

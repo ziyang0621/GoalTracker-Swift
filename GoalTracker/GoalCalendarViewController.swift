@@ -29,15 +29,6 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        for object in goalTasks! {
-            var date = object["taskDate"] as? NSDate
-            var isCompleted = object["isCompleted"] as? Bool
-            if isCompleted! {
-               completedDates.append(date!)
-            }
-            goalDates.append(date!)
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,11 +39,30 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         calendarView?.delegate = self
         calendarContainerView.addSubview(calendarView!)
         
+        loadDates()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadDates() {
+        
+        goalDates.removeAll(keepCapacity: false)
+        completedDates.removeAll(keepCapacity: false)
+        for object in goalTasks! {
+            var date = object["taskDate"] as? NSDate
+            var isCompleted = object["isCompleted"] as? Bool
+            if isCompleted! {
+                completedDates.append(date!)
+                println("completed date: \(date)")
+            }
+            goalDates.append(date!)
+        }
+    }
+    
+    func updateSingleTask() {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +75,18 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
     
     func datePickerView(view: RSDFDatePickerView!, didSelectDate date: NSDate!) {
         println(fullFormatter.stringFromDate(date))
+        for task in goalTasks! {
+            var aDate = task["taskDate"] as? NSDate
+            if aDate!.sameDay(date) {
+                var goalListVC = UIStoryboard.goalListViewController()
+                goalListVC?.fromCalendarView = true
+                goalListVC?.listDate = aDate
+                goalListVC?.taskArray = [PFObject]()
+                goalListVC?.taskArray!.append(task)
+                var goalListNav = UINavigationController(rootViewController: goalListVC!)
+                self.presentViewController(goalListNav, animated: true, completion: nil)
+            }
+        }
     }
     
     func datePickerView(view: RSDFDatePickerView!, shouldMarkDate date: NSDate!) -> Bool {
@@ -84,7 +106,6 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         }
         return false
     }
-
     
 
     /*

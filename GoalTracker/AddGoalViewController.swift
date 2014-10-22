@@ -11,17 +11,12 @@ import UIKit
 let kAddGoalTextFieldID = "AddGoalTextFieldCell"
 let kAddGoalLabelID = "AddGoalLabelCell"
 
-protocol AddGoalViewControllerDelegate {
-    func addedGoal(controller: AddGoalViewController)
-}
 
 class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FriendListViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var selectedFriend: User?
-    
-    var delegate: AddGoalViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,9 +113,6 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                     PFObject.saveAllInBackground(taskArray, block: {
                         (succeeded: Bool, error: NSError!) -> Void in
                         println("save all tasks")
-                        if let d = self.delegate {
-                            d.addedGoal(self)
-                        }
                         self.dismissViewControllerAnimated(true, completion: nil)
                     })
                 }
