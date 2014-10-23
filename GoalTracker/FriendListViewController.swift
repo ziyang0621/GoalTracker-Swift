@@ -35,7 +35,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func fetchFollowerList() {
         var verify = NSURL(string: kFollowerListURL)
-        var request = NSMutableURLRequest(URL: verify)
+        var request = NSMutableURLRequest(URL: verify!)
         PFTwitterUtils.twitter().signRequest(request)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             var object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
@@ -61,7 +61,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell =  tableView.dequeueReusableCellWithIdentifier("FriendCell") as UITableViewCell
         var friend = self.followers?[indexPath.row]
-        cell.textLabel?.text = friend?.screenname
+        cell.textLabel.text = friend?.screenname
         return cell
     }
     

@@ -58,21 +58,21 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var remindTime = timeFormatter.dateFromString(remindCell.addGoalTextField.text)
         var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        var remindComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: remindTime!)
+        var remindComponents = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: remindTime!)
         var hour = remindComponents.hour
         var min = remindComponents.minute
         
         var startDate = dateFormatter.dateFromString(startDateCell.addGoalTextField.text)
-        var startComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: startDate!)
+        var startComponents = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: startDate!)
         startComponents.hour = hour
         startComponents.minute = min
-        var newStartDate = calendar.dateFromComponents(startComponents)
+        var newStartDate = calendar!.dateFromComponents(startComponents)
         
         var goalDate = dateFormatter.dateFromString(goalDateCell.addGoalTextField.text)
-        var goalComponents = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: goalDate!)
+        var goalComponents = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute, fromDate: goalDate!)
         goalComponents.hour = hour
         goalComponents.minute = min
-        var newGoalDate = calendar.dateFromComponents(goalComponents)
+        var newGoalDate = calendar!.dateFromComponents(goalComponents)
         
         println(fullFormatter.stringFromDate(remindTime!))
         println(fullFormatter.stringFromDate(newStartDate!))
@@ -97,7 +97,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                     comps.day = 1
                     
                     var currentDate = newStartDate
-                    while newGoalDate?.compare(currentDate!) != NSComparisonResult.OrderedAscending {
+                    while newGoalDate!.compare(currentDate!) != .OrderedAscending {
                         var task = PFObject(className: "Task")
                         task["description"] = descriptionCell.addGoalTextField.text
                         task["taskDate"] = currentDate
@@ -107,12 +107,15 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                         taskArray.append(task)
                         
                         println("loop " + fullFormatter.stringFromDate(currentDate!))
-                        currentDate = currentCalendar.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
+                        currentDate = currentCalendar!.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
                     }
                     
                     PFObject.saveAllInBackground(taskArray, block: {
                         (succeeded: Bool, error: NSError!) -> Void in
                         println("save all tasks")
+                        for myTask in taskArray {
+                            UIApplication.sharedApplication().scheduleAlarm(myTask)
+                        }
                         self.dismissViewControllerAnimated(true, completion: nil)
                     })
                 }
@@ -157,7 +160,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
             var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalLabelID) as AddGoalLabelCell
-            cell.textLabel?.text = selectedFriend?.screenname ?? "select friend"
+            cell.textLabel.text = selectedFriend?.screenname ?? "select friend"
             return cell
         }
         if indexPath.section != 0 {

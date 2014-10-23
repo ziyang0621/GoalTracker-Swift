@@ -7,38 +7,74 @@
 //
 import Foundation
 
+extension UIApplication {
+    func scheduleAlarm(object: PFObject) {
+        var taskDate = object["taskDate"] as? NSDate
+        if taskDate!.compare(NSDate()) == .OrderedDescending {
+            var notiAlarm = UILocalNotification()
+            var taskName = object["description"] as? String
+            notiAlarm.alertBody = "\(taskName!) due at \(fullFormatter.stringFromDate(taskDate!))."
+            notiAlarm.fireDate = taskDate
+            notiAlarm.timeZone = NSTimeZone.systemTimeZone()
+            notiAlarm.soundName = UILocalNotificationDefaultSoundName
+            notiAlarm.userInfo = ["objectId": object.objectId]
+            notiAlarm.applicationIconBadgeNumber = 1
+            
+            scheduleLocalNotification(notiAlarm)
+        }
+    }
+    
+    func cancelScheduledAlarm(object: PFObject) {
+        var scheduledArray = Array(scheduledLocalNotifications)
+        for noti in scheduledArray {
+            var myNoti = noti as UILocalNotification
+            var name = myNoti.userInfo!["objectId"] as String
+            if name == object.objectId {
+                cancelLocalNotification(myNoti)
+            }
+        }
+    }
+    
+    func arrangeBadgeNumber() {
+        var scheduledArray = scheduledLocalNotifications
+        var fireDates = [NSDate]()
+        for noti in scheduledArray {
+            var myNoti = noti as UILocalNotification
+            fireDates.append(myNoti.fireDate!)
+        }
+        fireDates.sort{$0.compare($1) == NSComparisonResult.OrderedAscending}
+        for noti in scheduledArray {
+            var myNoti = noti as UILocalNotification
+            myNoti.applicationIconBadgeNumber = find(fireDates, noti.fireDate)! + 1
+        }
+        scheduledLocalNotifications = scheduledArray
+    }
+}
+
+
 extension NSDate {
     class func beginningOfDay(date: NSDate) -> NSDate {
         var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        var comps = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
-        return calendar.dateFromComponents(comps)!
+        var comps = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
+        return calendar!.dateFromComponents(comps)!
     }
     
     class func endOfDay(date: NSDate) -> NSDate {
         var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
         var comps = NSDateComponents()
         comps.day = 1
-        var newDate = calendar.dateByAddingComponents(comps, toDate: NSDate.beginningOfDay(date), options: nil)
+        var newDate = calendar!.dateByAddingComponents(comps, toDate: NSDate.beginningOfDay(date), options: nil)
         newDate =  newDate?.dateByAddingTimeInterval(-1)
         return newDate!
     }
     
     func sameDay(date: NSDate) -> Bool {
-//        NSCalendar *cal = [NSCalendar currentCalendar];
-//        NSDateComponents *components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
-//        NSDate *today = [cal dateFromComponents:components];
-//        components = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:aDate];
-//        NSDate *otherDate = [cal dateFromComponents:components];
-//        
-//        if([today isEqualToDate:otherDate]) {
-//            //do stuff
-//        }
         var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        var compsOne = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
-        var newDate = calendar.dateFromComponents(compsOne)
+        var compsOne = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
+        var newDate = calendar!.dateFromComponents(compsOne)
         
-        var compsTwo = calendar.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: self)
-        var newSelf = calendar.dateFromComponents(compsTwo)
+        var compsTwo = calendar!.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: self)
+        var newSelf = calendar!.dateFromComponents(compsTwo)
         
         var result = newDate?.isEqualToDate(newSelf!)
         if  result! {

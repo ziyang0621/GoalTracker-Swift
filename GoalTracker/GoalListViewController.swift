@@ -175,6 +175,9 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
                 var indexPath = NSIndexPath(forRow: index, inSection: 0)
                 self.taskArray?[index] = object!
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                if isCompleted {
+                    UIApplication.sharedApplication().cancelScheduledAlarm(object!)
+                }
             }
         })
     }

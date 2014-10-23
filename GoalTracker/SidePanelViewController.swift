@@ -30,7 +30,7 @@ class SidePanelViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("testCell") as UITableViewCell
-        cell.textLabel?.text = "Sign Out"
+        cell.textLabel.text = "Sign Out"
         return cell
     }
     
