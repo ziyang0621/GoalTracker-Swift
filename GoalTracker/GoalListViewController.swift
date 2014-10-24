@@ -47,7 +47,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         tableView.addSubview(refreshControl)
         
-           }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

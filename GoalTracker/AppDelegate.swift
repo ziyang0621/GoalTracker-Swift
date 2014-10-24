@@ -16,6 +16,7 @@ let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotificaiton = "userDidLogoutNotification"
 let kFollowerListURL = "https://api.twitter.com/1.1/followers/list.json"
+let kSendMessageURL = "https://api.twitter.com/1.1/direct_messages/new.json"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
 let dateFormatter = NSDateFormatter()
@@ -88,7 +89,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        var state = application.applicationState
+        var objectId = notification.userInfo!["objectId"] as String
+        var query = PFQuery(className: "Task")
+        query.whereKey("objectId", equalTo: objectId)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                var object = objects[0] as PFObject
+                var friendData = object["friend"] as NSData
+                var friendDict = NSJSONSerialization.JSONObjectWithData(friendData, options: nil, error: nil) as NSDictionary
+                var friend = User(dictionary: friendDict)
+                
+                println(friend.userId!)
+                
+                var msg = "didnt \(notification.alertBody!)"
+                PFTwitterUtils.sendMessage(friend.userId!, message: msg) { (error) -> () in
+                    if error == nil {
+                        println("sent msg to Twitter")
+                    }
+                }
+            }
+        }
+        
         if application.applicationState == .Active {
             var alert = UIAlertView(title: "Reminder", message: notification.alertBody, delegate: nil, cancelButtonTitle: "Ok")
             alert.show()

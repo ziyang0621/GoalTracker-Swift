@@ -7,6 +7,47 @@
 //
 import Foundation
 
+extension PFTwitterUtils {
+    class func fetchFollowerList(completion: (users: [NSDictionary]?, error: NSError?) ->()) {
+        var verify = NSURL(string: kFollowerListURL)
+        var request = NSMutableURLRequest(URL: verify!)
+        twitter().signRequest(request)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
+            (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            if error == nil {
+                var object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                var users = object["users"] as [NSDictionary]
+                completion(users: users, error: nil)
+            } else {
+                completion(users: nil, error: error)
+            }
+        })
+    }
+    
+    class func sendMessage(userId: String, message: String, completion: (error: NSError?) ->()) {
+        var msgString = message.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        var verify = NSURL(string: kSendMessageURL)
+        var bodyString = "text=\(msgString!)&user_id=\(userId)"
+        var request = NSMutableURLRequest(URL: verify!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        
+        twitter().signRequest(request)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
+            (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            if error == nil {
+                completion(error: nil)
+            } else {
+                println(error)
+                completion(error: error)
+            }
+        })
+    }
+}
+
+
 extension UIApplication {
     func scheduleAlarm(object: PFObject) {
         var taskDate = object["taskDate"] as? NSDate

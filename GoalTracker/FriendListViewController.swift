@@ -30,25 +30,19 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         followers = [User]()
         
-        fetchFollowerList()
+        PFTwitterUtils.fetchFollowerList {
+            (users, error) -> () in
+            if error == nil {
+                for userDict in users! {
+                    var user = User(dictionary: userDict)
+                    println(user.userId)
+                    self.followers?.append(user)
+                }
+                self.tableView.reloadData()
+            }
+        }
     }
     
-    func fetchFollowerList() {
-        var verify = NSURL(string: kFollowerListURL)
-        var request = NSMutableURLRequest(URL: verify!)
-        PFTwitterUtils.twitter().signRequest(request)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            var object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-            var users = object["users"] as [NSDictionary]
-            for userDict in users {
-                var user = User(dictionary: userDict)
-                println(user.screenname)
-                self.followers?.append(user)
-            }
-            self.tableView.reloadData()
-        })
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

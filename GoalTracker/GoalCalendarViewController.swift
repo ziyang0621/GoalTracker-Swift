@@ -62,8 +62,6 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    func updateSingleTask() {
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
