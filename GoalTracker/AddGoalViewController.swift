@@ -90,25 +90,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if succeeded {
                     println("saved goal")
                     
-                    var taskArray = [PFObject]()
-                    
-                    var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-                    var comps = NSDateComponents()
-                    comps.day = 1
-                    
-                    var currentDate = newStartDate
-                    while newGoalDate!.compare(currentDate!) != .OrderedAscending {
-                        var task = PFObject(className: "Task")
-                        task["description"] = descriptionCell.addGoalTextField.text
-                        task["taskDate"] = currentDate
-                        task["friend"] = NSJSONSerialization.dataWithJSONObject(self.selectedFriend!.dictionary, options: nil, error:nil)
-                        task["isCompleted"] = false
-                        task["parent"] = goal
-                        taskArray.append(task)
-                        
-                        println("loop " + fullFormatter.stringFromDate(currentDate!))
-                        currentDate = currentCalendar!.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
-                    }
+                    var taskArray = PFObject.createGoalTasks(goal)
                     
                     PFObject.saveAllInBackground(taskArray, block: {
                         (succeeded: Bool, error: NSError!) -> Void in
@@ -121,8 +103,6 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
-        
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

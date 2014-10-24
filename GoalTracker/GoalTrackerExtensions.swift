@@ -7,6 +7,50 @@
 //
 import Foundation
 
+extension PFObject {
+    class func createGoalTasks(parent: PFObject) -> [PFObject] {
+        
+        var taskArray = [PFObject]()
+        
+        var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var comps = NSDateComponents()
+        comps.day = 1
+        
+        var newStartDate = parent["startDate"] as? NSDate
+        var newGoalDate = parent["goalDate"] as? NSDate
+        var currentDate = newStartDate
+        while newGoalDate!.compare(currentDate!) != .OrderedAscending {
+            var task = PFObject(className: "Task")
+            task["description"] = parent["description"] as String
+            task["taskDate"] = currentDate
+            task["friend"] = parent["friend"] as NSData
+            task["isCompleted"] = false
+            task["parent"] = parent
+            taskArray.append(task)
+            
+            println("loop " + fullFormatter.stringFromDate(currentDate!))
+            currentDate = currentCalendar!.dateByAddingComponents(comps, toDate: currentDate!, options: nil)
+        }
+        
+        return taskArray
+    }
+    
+    class func removeGoalandTasks(taskArray: [PFObject], completion: (error: NSError?) ->()) {
+        var firstTask = taskArray[0] as PFObject
+        var goal = firstTask["parent"] as PFObject
+        var newArray = Array(taskArray)
+        newArray.append(goal)
+        PFObject.deleteAllInBackground(newArray, block: {
+            (succeeded: Bool, error: NSError!) -> Void in
+            if error == nil {
+                completion(error: nil)
+            } else {
+                completion(error: error)
+            }
+        })
+    }
+}
+
 extension PFTwitterUtils {
     class func fetchFollowerList(completion: (users: [NSDictionary]?, error: NSError?) ->()) {
         var verify = NSURL(string: kFollowerListURL)

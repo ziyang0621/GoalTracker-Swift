@@ -19,6 +19,7 @@ let kFollowerListURL = "https://api.twitter.com/1.1/followers/list.json"
 let kSendMessageURL = "https://api.twitter.com/1.1/direct_messages/new.json"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
+let kRedColor = UIColor.colorWithRGBHex(0xFF5B37, alpha: 1.0)
 let dateFormatter = NSDateFormatter()
 let timeFormatter = NSDateFormatter()
 let fullFormatter = NSDateFormatter()
@@ -102,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 println(friend.userId!)
                 
-                var msg = "didnt \(notification.alertBody!)"
+                var msg = "didnt \(notification.alertBody!) - sent from GoalTracker"
                 PFTwitterUtils.sendMessage(friend.userId!, message: msg) { (error) -> () in
                     if error == nil {
                         println("sent msg to Twitter")

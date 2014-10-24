@@ -14,6 +14,8 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var calendarContainerView: UIView!
     
+    @IBOutlet weak var removeBtn: UIButton!
+    
     var calendarView: RSDFDatePickerView?
     
     var goalTasks: [PFObject]?
@@ -29,12 +31,21 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .None
+        
+        removeBtn.addTarget(self, action: "onRemoveGoal", forControlEvents: .TouchUpInside)
+        removeBtn.layer.cornerRadius = CGRectGetHeight(removeBtn.frame) / 3
+        removeBtn.layer.borderWidth = 1
+        removeBtn.layer.borderColor = kRedColor.CGColor
+        removeBtn.backgroundColor = kRedColor
+        removeBtn.clipsToBounds = true
+        removeBtn.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        calendarView = RSDFDatePickerView(frame: calendarContainerView.frame)
+        calendarView = RSDFDatePickerView(frame: CGRectMake(CGRectGetMinX(calendarContainerView.frame), CGRectGetMinY(calendarContainerView.frame), CGRectGetWidth(calendarContainerView.frame), 340))
         calendarView?.dataSource = self
         calendarView?.delegate = self
         calendarContainerView.addSubview(calendarView!)
@@ -105,7 +116,27 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         return false
     }
     
-
+    func onRemoveGoal() {
+        let alertController = UIAlertController(title: "Remove Goal", message: "Are you use to remove this goal?", preferredStyle: .ActionSheet)
+        
+        let removeAction = UIAlertAction(title: "Yes, remove it", style: .Destructive, handler: {
+            action in
+                PFObject.removeGoalandTasks(self.goalTasks!, completion: {
+                    (error) -> () in
+                    if error == nil {
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                })
+            }
+        )
+        alertController.addAction(removeAction)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
