@@ -18,6 +18,8 @@
 		85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85322CCE19F4609E002CA450 /* AddGoalViewController.swift */; };
 		85583AB019F4C1A800F90652 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85583AAF19F4C1A800F90652 /* FriendListViewController.swift */; };
 		85583AB219F4D55400F90652 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85583AB119F4D55400F90652 /* User.swift */; };
+		856E8BA719FAEC94002761B9 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E8BA519FAEC94002761B9 /* SideMenuCell.swift */; };
+		856E8BA819FAEC94002761B9 /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856E8BA619FAEC94002761B9 /* SideMenuCell.xib */; };
 		85A733BA19F6DF2D00B8CF8A /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A733B819F6DF2D00B8CF8A /* TaskCell.swift */; };
 		85A733BB19F6DF2D00B8CF8A /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A733B919F6DF2D00B8CF8A /* TaskCell.xib */; };
 		85A733BD19F71D7000B8CF8A /* GoalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */; };
@@ -65,6 +67,8 @@
 		85322CCE19F4609E002CA450 /* AddGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
 		85583AAF19F4C1A800F90652 /* FriendListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		85583AB119F4D55400F90652 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		856E8BA519FAEC94002761B9 /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		856E8BA619FAEC94002761B9 /* SideMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		85A733B819F6DF2D00B8CF8A /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		85A733B919F6DF2D00B8CF8A /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCalendarViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				850F7BEB19F4A5DF006E16A0 /* AddGoalLabelCell.xib */,
 				85A733B819F6DF2D00B8CF8A /* TaskCell.swift */,
 				85A733B919F6DF2D00B8CF8A /* TaskCell.xib */,
+				856E8BA519FAEC94002761B9 /* SideMenuCell.swift */,
+				856E8BA619FAEC94002761B9 /* SideMenuCell.xib */,
 				85FA664719F2DE4C00853596 /* Main.storyboard */,
 				85FA666919F2E0DF00853596 /* GoalTracker-Bridging-Header.h */,
 				85322CCC19F454C8002CA450 /* GoalTrackerExtensions.swift */,
@@ -306,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85FA664919F2DE4C00853596 /* Main.storyboard in Resources */,
+				856E8BA819FAEC94002761B9 /* SideMenuCell.xib in Resources */,
 				850F7BED19F4A5DF006E16A0 /* AddGoalLabelCell.xib in Resources */,
 				85FA664E19F2DE4C00853596 /* LaunchScreen.xib in Resources */,
 				850F7BE519F4A0B6006E16A0 /* AddGoalTextFieldCell.xib in Resources */,
@@ -369,6 +376,7 @@
 				85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */,
 				850F7BEC19F4A5DF006E16A0 /* AddGoalLabelCell.swift in Sources */,
 				85A733BA19F6DF2D00B8CF8A /* TaskCell.swift in Sources */,
+				856E8BA719FAEC94002761B9 /* SideMenuCell.swift in Sources */,
 				85FA664619F2DE4C00853596 /* ViewController.swift in Sources */,
 				85583AB219F4D55400F90652 /* User.swift in Sources */,
 				85A733BD19F71D7000B8CF8A /* GoalCalendarViewController.swift in Sources */,

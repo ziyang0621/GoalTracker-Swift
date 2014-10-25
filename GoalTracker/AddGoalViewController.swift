@@ -84,6 +84,8 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         goal["goalDate"] = newGoalDate
         goal["friend"] = NSJSONSerialization.dataWithJSONObject(selectedFriend!.dictionary, options: nil, error:nil)
         goal["isCompleted"] = false
+        
+        var progressView = MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: false)
         goal.saveInBackgroundWithBlock {
             (succeeded: Bool, error: NSError!) -> Void in
             if error == nil {
@@ -98,6 +100,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
                         for myTask in taskArray {
                             UIApplication.sharedApplication().scheduleAlarm(myTask)
                         }
+                        MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: false)
                         self.dismissViewControllerAnimated(true, completion: nil)
                     })
                 }

@@ -13,10 +13,9 @@ let parseApplicationId = "jJ8uwIwbayhLySJ3hIlAd2S3AjmqG2kMYkET3eRz"
 let parseClientKey = "lubvDSEYJxGINkhLLMi0eMeasfmRipLgTcgx7J9r"
 let twitterConsumerKey = "NAjAe0Tx05FmMUq8nIG4DhT44"
 let twitterConsumerSecret = "KObQM1z4JdsmzZcOlDSiNzmUCsvdI5vw6ehl1HNkQIiIta1oOa"
-let userDidLoginNotification = "userDidLoginNotification"
-let userDidLogoutNotificaiton = "userDidLogoutNotification"
 let kFollowerListURL = "https://api.twitter.com/1.1/followers/list.json"
 let kSendMessageURL = "https://api.twitter.com/1.1/direct_messages/new.json"
+let kProfileURL = "https://api.twitter.com/1.1/users/show.json"
 let kThemeColor = UIColor.colorWithRGBHex(0x34AADC, alpha: 1.0)
 let kCellDividerColor = UIColor.colorWithRGBHex(0xF7F7F7, alpha: 1.0)
 let kRedColor = UIColor.colorWithRGBHex(0xFF5B37, alpha: 1.0)
@@ -29,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var sideMenuVC: RESideMenu?
+    var frostedMenuVC: REFrostedViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -47,11 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIColor.imageWithColor(kThemeColor)
         UINavigationBar.appearance().translucent = true
 
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotificaiton, object: nil)
-        
         var currentUser = PFUser.currentUser()
         if currentUser != nil {
             println("is logged in")
@@ -79,14 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var goalListNav = UINavigationController(rootViewController: goalListVC!)
         var sidePanelVC = UIStoryboard.sidePanelViewController()
         
-        sideMenuVC = RESideMenu(contentViewController: goalListNav, leftMenuViewController: sidePanelVC, rightMenuViewController: nil)
-        
-        self.window?.rootViewController = sideMenuVC
+        frostedMenuVC = REFrostedViewController(contentViewController: goalListNav, menuViewController: sidePanelVC)
+        frostedMenuVC?.direction = .Left
+        frostedMenuVC?.liveBlur = true
+        self.window?.rootViewController = frostedMenuVC
     }
     
     func userDidLogout() {
         var loginVC = UIStoryboard.loginViewController()
         window?.rootViewController = loginVC
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kProfileImageURLStringKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

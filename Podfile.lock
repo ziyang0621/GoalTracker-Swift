@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - MRProgress (0.8.0-alpha1):
     - MRProgress/ActivityIndicator
     - MRProgress/Blur
@@ -27,17 +48,19 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.0-alpha1)
   - MRProgress/Stopable (0.8.0-alpha1):
     - MRProgress/Helper
-  - RESideMenu (4.0.7)
-  - RSDayFlow (0.6.1)
+  - REFrostedViewController (2.4.7)
+  - RSDayFlow (0.7.1)
 
 DEPENDENCIES:
+  - AFNetworking
   - MRProgress
-  - RESideMenu
+  - REFrostedViewController
   - RSDayFlow
 
 SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   MRProgress: a5a9f58939ac3e7458dd9a5d0c423c748788b046
-  RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
-  RSDayFlow: fac5425147978e54eac04106c0cc4f5221e0a9fa
+  REFrostedViewController: 08870a24788191339608b80b2bd4fce549858f0d
+  RSDayFlow: 08b2f5c0f12650ac03c902db5de06460cfb7bcd3
 
 COCOAPODS: 0.33.1

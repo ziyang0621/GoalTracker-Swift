@@ -9,7 +9,6 @@ import Foundation
 
 extension PFObject {
     class func createGoalTasks(parent: PFObject) -> [PFObject] {
-        
         var taskArray = [PFObject]()
         
         var currentCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
@@ -88,6 +87,34 @@ extension PFTwitterUtils {
                 completion(error: error)
             }
         })
+    }
+    
+    class func getUserProfileImage(userId: String, completion: (urlString: String?, error: NSError?) ->()) {
+        var loadUrlString = NSUserDefaults.standardUserDefaults().objectForKey(kProfileImageURLStringKey) as? String
+        if loadUrlString == nil {
+            var verify = NSURL(string: "\(kProfileURL)?user_id=\(userId)")
+            var request = NSMutableURLRequest(URL: verify!)
+            
+            twitter().signRequest(request)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
+                (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                if error == nil {
+                    var object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                    var urlString = object["profile_image_url"] as? String
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(urlString!, forKey: kProfileImageURLStringKey)
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                    completion(urlString: urlString, error: nil)
+                } else {
+                    println(error)
+                    completion(urlString: nil, error: error)
+                }
+            })
+        } else {
+            println("load from user default")
+            completion(urlString: loadUrlString, error: nil)
+        }
     }
 }
 

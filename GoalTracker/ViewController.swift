@@ -27,10 +27,12 @@ class ViewController: UIViewController {
                 NSLog("Uh oh. The user cancelled the Twitter login.")
             } else if user.isNew {
                 println("User signed up and logged in with Twitter!")
-                NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
+                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                appDelegate.userDidLogin()
             } else {
                 println("User logged in with Twitter!")
-                NSNotificationCenter.defaultCenter().postNotificationName(userDidLoginNotification, object: nil)
+                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                appDelegate.userDidLogin()
             }
         }
     }

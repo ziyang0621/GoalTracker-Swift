@@ -107,7 +107,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func onMenu() {
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        appDelegate.sideMenuVC?.presentLeftMenuViewController()
+        appDelegate.frostedMenuVC?.presentMenuViewController()
     }
     
     func onAdd() {
@@ -155,10 +155,12 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
             var calendarVC = UIStoryboard.goalCalendarViewController()
             var backBarButton = UIBarButtonItem(title: "Back", style: .Bordered, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButton
+            var progressView = MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: false)
             loadTasksForCalender(indexPath.row, completion: {
                 (objects, error) -> () in
                 if error == nil {
                     calendarVC?.goalTasks = objects as? [PFObject]
+                    MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: false)
                     self.navigationController?.pushViewController(calendarVC!, animated: true)
                 }
             })

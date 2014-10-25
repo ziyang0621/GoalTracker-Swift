@@ -8,15 +8,39 @@
 
 import UIKit
 
+let kSideMenuCellID = "SideMenuCell"
+let kProfileImageURLStringKey = "profileImageKey"
+
 class SidePanelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .None
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerNib(UINib(nibName: "SideMenuCell", bundle: nil), forCellReuseIdentifier: kSideMenuCellID)
+        
+        profileImageView.clipsToBounds = true;
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.layer.borderColor = kThemeColor.CGColor
+        profileImageView.layer.cornerRadius = CGRectGetWidth(profileImageView.frame) / 2
+        
+        tableView.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clearColor()
+        
+        PFTwitterUtils.getUserProfileImage(PFTwitterUtils.twitter().userId, completion: {
+            (urlString, error) -> () in
+            if error == nil {
+                self.profileImageView.setImageWithURL(NSURL(string: urlString!)!)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,18 +49,35 @@ class SidePanelViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("testCell") as UITableViewCell
-        cell.textLabel.text = "Sign Out"
+        var cell = tableView.dequeueReusableCellWithIdentifier(kSideMenuCellID) as SideMenuCell
+        if indexPath.row == 0 {
+            cell.iconImageView.image = UIImage(named: "goal")
+            cell.menuTextLabel.text = "Goal List"
+        } else if indexPath.row == 1 {
+            cell.iconImageView.image = UIImage(named: "signout")
+            cell.menuTextLabel.text = "Sign Out"
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        PFUser.logOut()
-        NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotificaiton, object: nil)
+        if indexPath.row == 0 {
+            var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            var goalListVC = UIStoryboard.goalListViewController()
+            goalListVC?.listDate = NSDate()
+            var goalListNav = UINavigationController(rootViewController: goalListVC!)
+            appDelegate.frostedMenuVC?.contentViewController = goalListNav
+            appDelegate.frostedMenuVC?.hideMenuViewController()
+        }
+        else if indexPath.row == 1 {
+            PFUser.logOut()
+            var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            appDelegate.userDidLogout()
+        }
     }
     
 

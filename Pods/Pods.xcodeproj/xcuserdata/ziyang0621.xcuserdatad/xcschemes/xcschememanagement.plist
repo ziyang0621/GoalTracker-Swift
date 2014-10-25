@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MRProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RESideMenu.xcscheme</key>
+		<key>Pods-REFrostedViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>130C9CF4AFE34263950A8357</key>
+		<key>0F93E854346F4FA8AC328C4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DC50F339BD24B87B7F6814B</key>
+		<key>87E5BE7AB1484F24934C1D83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5126D03A7BA45B4A8894C89</key>
+		<key>CFCCB204D551460C981D06F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CB4D071F5ABA4CD6929A66BC</key>
+		<key>D2A14D7F8E16441FB9CADCAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D314F755135840F58F83CC83</key>
 		<dict>
 			<key>primary</key>
 			<true/>

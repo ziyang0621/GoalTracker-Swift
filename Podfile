@@ -1,5 +1,6 @@
 platform :ios, "8.0"
 
 pod "MRProgress"
-pod "RESideMenu"
+pod "REFrostedViewController"
 pod "RSDayFlow"
+pod "AFNetworking"

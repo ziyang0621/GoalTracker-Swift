@@ -121,9 +121,14 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         
         let removeAction = UIAlertAction(title: "Yes, remove it", style: .Destructive, handler: {
             action in
+                var progressView = MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: false)
+                for singleTask in self.goalTasks! {
+                    UIApplication.sharedApplication().cancelScheduledAlarm(singleTask)
+                }
                 PFObject.removeGoalandTasks(self.goalTasks!, completion: {
                     (error) -> () in
                     if error == nil {
+                        MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: false)
                         self.navigationController?.popViewControllerAnimated(true)
                     }
                 })
