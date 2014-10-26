@@ -114,6 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alert.show()
         }
         application.applicationIconBadgeNumber = 0
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(kRefreshGoalListTableView, object: nil)
     }
 
     func applicationWillResignActive(application: UIApplication) {

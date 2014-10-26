@@ -22,6 +22,8 @@ class TaskCell: UITableViewCell {
     
     var isCompleted = false
     
+    var taskDate: NSDate?
+    
     var cellIndex = 0
     
     var delegate :TaskCellDelegate!
@@ -33,6 +35,15 @@ class TaskCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        timeLabel.text = timeFormatter.stringFromDate(taskDate!)
+        if taskDate!.isEalier(NSDate()) && !isCompleted {
+            descriptionLabel.textColor = kRedColor
+            timeLabel.textColor = kRedColor
+        } else {
+            descriptionLabel.textColor = UIColor.blackColor()
+            timeLabel.textColor = UIColor.blackColor()
+        }
 
         checkImageView.image = checkImageView.image?.imageWithColor(kThemeColor)
         

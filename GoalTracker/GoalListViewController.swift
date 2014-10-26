@@ -9,6 +9,7 @@
 import UIKit
 
 let kTaskCellID = "TaskCell"
+let kRefreshGoalListTableView = "refreshGoalListTableView"
 
 class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate {
     
@@ -47,6 +48,8 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         tableView.addSubview(refreshControl)
         
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTableView", name: kRefreshGoalListTableView, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +58,10 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         if !fromCalendarView {
             loadTasks()
         }
+    }
+    
+    func refreshTableView() {
+        tableView.reloadData()
     }
     
     func loadTasks() {
@@ -131,8 +138,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         var task = taskArray?[indexPath.row]
         cell.descriptionLabel.text = task!["description"] as? String
         
-        var taskDate = task!["taskDate"] as? NSDate
-        cell.timeLabel.text = timeFormatter.stringFromDate(taskDate!)
+        cell.taskDate = task!["taskDate"] as? NSDate
         
         var isCompleted = task!["isCompleted"] as? Bool
         if let isCom = isCompleted {

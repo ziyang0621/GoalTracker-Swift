@@ -194,6 +194,18 @@ extension NSDate {
         }
         return false
     }
+    
+    func isEalier(date: NSDate) -> Bool {
+        return self.compare(date) == .OrderedAscending ? true : false
+    }
+    
+    func isLater(date: NSDate) -> Bool {
+        return self.compare(date) == .OrderedDescending ? true : false
+    }
+    
+    func isSame(date: NSDate) -> Bool {
+        return self.compare(date) == .OrderedSame ? true : false
+    }
 }
 
 extension UIColor {
