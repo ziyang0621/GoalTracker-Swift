@@ -12,6 +12,8 @@ protocol FriendListViewControllerDelegate {
     func selectedFriend(controller:FriendListViewController, friend:User)
 }
 
+let kFriendCellID = "FriendCell"
+
 class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +29,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerNib(UINib(nibName: "FriendCell", bundle: nil), forCellReuseIdentifier: kFriendCellID)
         
         followers = [User]()
         
@@ -53,9 +58,12 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell =  tableView.dequeueReusableCellWithIdentifier("FriendCell") as UITableViewCell
+        var cell =  tableView.dequeueReusableCellWithIdentifier("FriendCell") as FriendCell
         var friend = self.followers?[indexPath.row]
-        cell.textLabel.text = friend?.screenname
+        cell.nameLabel.text = friend?.screenname
+        if let imageURL = friend?.profileImageUrl {
+            cell.profileImageView.setImageWithURL(NSURL(string: imageURL))
+        }
         return cell
     }
     

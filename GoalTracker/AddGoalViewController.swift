@@ -84,6 +84,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         goal["goalDate"] = newGoalDate
         goal["friend"] = NSJSONSerialization.dataWithJSONObject(selectedFriend!.dictionary, options: nil, error:nil)
         goal["isCompleted"] = false
+        goal["userId"] = PFTwitterUtils.twitter().userId
         
         var progressView = MRProgressOverlayView.showOverlayAddedTo(self.navigationController?.view, animated: false)
         goal.saveInBackgroundWithBlock {

@@ -68,6 +68,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         var query = PFQuery(className: "Task")
         query.whereKey("taskDate", greaterThanOrEqualTo: NSDate.beginningOfDay(listDate!))
         query.whereKey("taskDate", lessThanOrEqualTo: NSDate.endOfDay(listDate!))
+        query.whereKey("userId", equalTo: PFTwitterUtils.twitter().userId)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {

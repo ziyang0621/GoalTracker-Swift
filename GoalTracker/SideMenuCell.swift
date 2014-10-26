@@ -18,10 +18,14 @@ class SideMenuCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .None
         backgroundColor = UIColor.clearColor()
+        
+        menuTextLabel.textColor = kThemeColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        iconImageView.image = iconImageView.image?.imageWithColor(kThemeColor)
     }
     
 }
