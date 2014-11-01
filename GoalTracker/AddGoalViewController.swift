@@ -16,6 +16,10 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var warningView: UIView!
+    
+    @IBOutlet weak var warningLabel: UILabel!
+    
     var selectedFriend: User?
     
     override func viewDidLoad() {
@@ -31,6 +35,11 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.registerNib(UINib(nibName: "AddGoalTextFieldCell", bundle: nil), forCellReuseIdentifier: kAddGoalTextFieldID)
         tableView.registerNib(UINib(nibName: "AddGoalLabelCell", bundle: nil), forCellReuseIdentifier: kAddGoalLabelID)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        warningView.alpha = 0
 
     }
     
@@ -48,7 +57,29 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func showWarning (text: String) {
+        warningLabel.text = text
+        warningView.alpha = 1
+        UIView.beginAnimations("fade in", context: nil)
+        UIView.setAnimationDuration(4.0)
+        warningView.alpha = 0
+        UIView.commitAnimations()
+    }
+    
     func onCreate() {
+        tableView.endEditing(true)
+        
+        for index in 0...3 {
+            var cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as AddGoalTextFieldCell
+            if cell.addGoalTextField.text.isEmpty {
+                showWarning("all fields are required")
+                return
+            }
+        }
+        if selectedFriend == nil {
+            showWarning("all fields are required")
+            return
+        }
        
         var descriptionCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as AddGoalTextFieldCell
         var startDateCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as AddGoalTextFieldCell
@@ -77,6 +108,11 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
         println(fullFormatter.stringFromDate(remindTime!))
         println(fullFormatter.stringFromDate(newStartDate!))
         println(fullFormatter.stringFromDate(newGoalDate!))
+        
+        if newStartDate!.isLater(newGoalDate!) {
+            showWarning("start date should be earlier than goal date")
+            return
+        }
         
         var goal = PFObject(className: "Goal")
         goal["description"] = descriptionCell.addGoalTextField.text

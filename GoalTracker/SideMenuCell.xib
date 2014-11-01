@@ -15,14 +15,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-SP-8Hp">
-                        <rect key="frame" x="20" y="20" width="60" height="60"/>
+                        <rect key="frame" x="40" y="25" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="mZb-3c-8JD"/>
-                            <constraint firstAttribute="width" constant="60" id="uSy-XP-ojF"/>
+                            <constraint firstAttribute="height" constant="50" id="mZb-3c-8JD"/>
+                            <constraint firstAttribute="width" constant="50" id="uSy-XP-ojF"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD2-tt-rVu">
-                        <rect key="frame" x="120" y="15" width="160" height="70"/>
+                        <rect key="frame" x="110" y="15" width="170" height="70"/>
                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -30,11 +30,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="DD2-tt-rVu" secondAttribute="trailing" constant="32" id="5rv-NE-hnU"/>
-                    <constraint firstItem="DD2-tt-rVu" firstAttribute="leading" secondItem="dWe-SP-8Hp" secondAttribute="trailing" constant="40" id="6h5-37-ZC2"/>
+                    <constraint firstItem="DD2-tt-rVu" firstAttribute="leading" secondItem="dWe-SP-8Hp" secondAttribute="trailing" constant="20" id="6h5-37-ZC2"/>
                     <constraint firstItem="DD2-tt-rVu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="Tb7-KE-qPO"/>
                     <constraint firstAttribute="bottomMargin" secondItem="DD2-tt-rVu" secondAttribute="bottom" constant="6" id="fbK-7B-Cnk"/>
-                    <constraint firstAttribute="centerY" secondItem="dWe-SP-8Hp" secondAttribute="centerY" constant="-0.5" id="olA-Um-3yn"/>
-                    <constraint firstItem="dWe-SP-8Hp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="uP2-3l-VEZ"/>
+                    <constraint firstAttribute="centerY" secondItem="dWe-SP-8Hp" secondAttribute="centerY" id="olA-Um-3yn"/>
+                    <constraint firstItem="dWe-SP-8Hp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="32" id="uP2-3l-VEZ"/>
                     <constraint firstAttribute="centerY" secondItem="DD2-tt-rVu" secondAttribute="centerY" constant="-0.5" id="xeI-Fd-LkO"/>
                 </constraints>
             </tableViewCellContentView>

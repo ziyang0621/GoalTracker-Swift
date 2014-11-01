@@ -205,17 +205,42 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8v-cc-rfc">
+                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqq-dv-R3N">
+                                        <rect key="frame" x="200" y="5" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.51488464550000002" blue="0.47876824270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Eqq-dv-R3N" secondAttribute="bottom" constant="5" id="Ixp-2P-yld"/>
+                                    <constraint firstAttribute="centerX" secondItem="Eqq-dv-R3N" secondAttribute="centerX" id="YFf-2d-Ptk"/>
+                                    <constraint firstItem="Eqq-dv-R3N" firstAttribute="leading" relation="lessThanOrEqual" secondItem="v8v-cc-rfc" secondAttribute="leading" constant="200" id="aWF-qe-OFc"/>
+                                    <constraint firstItem="Eqq-dv-R3N" firstAttribute="top" secondItem="v8v-cc-rfc" secondAttribute="top" constant="5" id="b5A-YF-Mgk"/>
+                                    <constraint firstAttribute="height" constant="40" id="p2o-m3-4ye"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Eqq-dv-R3N" secondAttribute="trailing" constant="200" id="xcc-p1-5BK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="v8v-cc-rfc" secondAttribute="trailing" id="GRJ-Op-9mN"/>
                             <constraint firstItem="NpE-8z-AEl" firstAttribute="leading" secondItem="dln-FH-WSL" secondAttribute="leading" id="bGT-Ep-qkB"/>
                             <constraint firstAttribute="bottom" secondItem="NpE-8z-AEl" secondAttribute="bottom" id="qri-Hz-Ae9"/>
                             <constraint firstAttribute="trailing" secondItem="NpE-8z-AEl" secondAttribute="trailing" id="utn-mc-s5j"/>
+                            <constraint firstItem="v8v-cc-rfc" firstAttribute="top" secondItem="dln-FH-WSL" secondAttribute="top" constant="64" id="vpk-kh-Sim"/>
                             <constraint firstItem="NpE-8z-AEl" firstAttribute="top" secondItem="dln-FH-WSL" secondAttribute="top" id="vvw-tE-mrE"/>
+                            <constraint firstItem="v8v-cc-rfc" firstAttribute="leading" secondItem="dln-FH-WSL" secondAttribute="leading" id="yfS-3q-4ak"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="NpE-8z-AEl" id="0zK-ol-eyP"/>
+                        <outlet property="warningLabel" destination="Eqq-dv-R3N" id="8MV-vY-MR2"/>
+                        <outlet property="warningView" destination="v8v-cc-rfc" id="6tn-oj-Z07"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Eb-r2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
