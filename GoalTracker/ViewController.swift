@@ -10,14 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    @IBOutlet weak var loginBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        backgroundImageView.image = UIImage(named: "goalLogin")!.imageWithColor(kThemeColor)
+        backgroundImageView.alpha = 0.2
+        
+        loginBtn.tintColor = UIColor.whiteColor()
+        loginBtn.backgroundColor = kThemeColor
+        loginBtn.clipsToBounds = true
+        loginBtn.layer.cornerRadius = 5
+        loginBtn.alpha = 0.7
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onLogin(sender: AnyObject) {

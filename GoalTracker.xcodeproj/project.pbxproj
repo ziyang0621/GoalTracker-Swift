@@ -25,6 +25,9 @@
 		85A733BD19F71D7000B8CF8A /* GoalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */; };
 		85BA2C9519FD98FD00AAEC7F /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BA2C9319FD98FD00AAEC7F /* FriendCell.swift */; };
 		85BA2C9619FD98FD00AAEC7F /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85BA2C9419FD98FD00AAEC7F /* FriendCell.xib */; };
+		85C218741A06C05300AF2395 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C218721A06C05300AF2395 /* CalendarCell.swift */; };
+		85C218751A06C05300AF2395 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85C218731A06C05300AF2395 /* CalendarCell.xib */; };
+		85D410B61A071AEA00083DF0 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D410B51A071AEA00083DF0 /* GoalButton.swift */; };
 		85FA664419F2DE4C00853596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664319F2DE4C00853596 /* AppDelegate.swift */; };
 		85FA664619F2DE4C00853596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA664519F2DE4C00853596 /* ViewController.swift */; };
 		85FA664919F2DE4C00853596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85FA664719F2DE4C00853596 /* Main.storyboard */; };
@@ -76,6 +79,9 @@
 		85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCalendarViewController.swift; sourceTree = "<group>"; };
 		85BA2C9319FD98FD00AAEC7F /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		85BA2C9419FD98FD00AAEC7F /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
+		85C218721A06C05300AF2395 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		85C218731A06C05300AF2395 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		85D410B51A071AEA00083DF0 /* GoalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButton.swift; sourceTree = "<group>"; };
 		85FA663E19F2DE4B00853596 /* GoalTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA664219F2DE4C00853596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85FA664319F2DE4C00853596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 			children = (
 				85FA664319F2DE4C00853596 /* AppDelegate.swift */,
 				85583AB119F4D55400F90652 /* User.swift */,
+				85D410B51A071AEA00083DF0 /* GoalButton.swift */,
 				85FA664519F2DE4C00853596 /* ViewController.swift */,
 				85322CCA19F4547C002CA450 /* GoalListViewController.swift */,
 				85A733BC19F71D7000B8CF8A /* GoalCalendarViewController.swift */,
@@ -196,6 +203,8 @@
 				850F7BEB19F4A5DF006E16A0 /* AddGoalLabelCell.xib */,
 				85A733B819F6DF2D00B8CF8A /* TaskCell.swift */,
 				85A733B919F6DF2D00B8CF8A /* TaskCell.xib */,
+				85C218721A06C05300AF2395 /* CalendarCell.swift */,
+				85C218731A06C05300AF2395 /* CalendarCell.xib */,
 				85BA2C9319FD98FD00AAEC7F /* FriendCell.swift */,
 				85BA2C9419FD98FD00AAEC7F /* FriendCell.xib */,
 				856E8BA519FAEC94002761B9 /* SideMenuCell.swift */,
@@ -319,6 +328,7 @@
 			files = (
 				85FA664919F2DE4C00853596 /* Main.storyboard in Resources */,
 				856E8BA819FAEC94002761B9 /* SideMenuCell.xib in Resources */,
+				85C218751A06C05300AF2395 /* CalendarCell.xib in Resources */,
 				850F7BED19F4A5DF006E16A0 /* AddGoalLabelCell.xib in Resources */,
 				85FA664E19F2DE4C00853596 /* LaunchScreen.xib in Resources */,
 				850F7BE519F4A0B6006E16A0 /* AddGoalTextFieldCell.xib in Resources */,
@@ -379,11 +389,13 @@
 				85322CCB19F4547C002CA450 /* GoalListViewController.swift in Sources */,
 				85583AB019F4C1A800F90652 /* FriendListViewController.swift in Sources */,
 				850F7BE419F4A0B6006E16A0 /* AddGoalTextFieldCell.swift in Sources */,
+				85C218741A06C05300AF2395 /* CalendarCell.swift in Sources */,
 				85322CCD19F454C8002CA450 /* GoalTrackerExtensions.swift in Sources */,
 				85322CCF19F4609E002CA450 /* AddGoalViewController.swift in Sources */,
 				850F7BEC19F4A5DF006E16A0 /* AddGoalLabelCell.swift in Sources */,
 				85BA2C9519FD98FD00AAEC7F /* FriendCell.swift in Sources */,
 				85A733BA19F6DF2D00B8CF8A /* TaskCell.swift in Sources */,
+				85D410B61A071AEA00083DF0 /* GoalButton.swift in Sources */,
 				856E8BA719FAEC94002761B9 /* SideMenuCell.swift in Sources */,
 				85FA664619F2DE4C00853596 /* ViewController.swift in Sources */,
 				85583AB219F4D55400F90652 /* User.swift in Sources */,

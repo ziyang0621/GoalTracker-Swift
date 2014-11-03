@@ -22,6 +22,8 @@ class TaskCell: UITableViewCell {
     
     var isCompleted = false
     
+    var isCompletedEarly = false
+    
     var taskDate: NSDate?
     
     var cellIndex = 0
@@ -37,16 +39,22 @@ class TaskCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         timeLabel.text = timeFormatter.stringFromDate(taskDate!)
-        if taskDate!.isEalier(NSDate()) && !isCompleted {
-            descriptionLabel.textColor = kRedColor
-            timeLabel.textColor = kRedColor
+        if !isCompleted {
+            descriptionLabel.textColor = kGrayColor
+            timeLabel.textColor = kGrayColor
+            checkImageView.image = checkImageView.image?.imageWithColor(kGrayColor)
         } else {
-            descriptionLabel.textColor = UIColor.blackColor()
-            timeLabel.textColor = UIColor.blackColor()
+            if isCompletedEarly {
+                descriptionLabel.textColor = kGreenColor
+                timeLabel.textColor = kGreenColor
+                checkImageView.image = checkImageView.image?.imageWithColor(kGreenColor)
+            } else {
+                descriptionLabel.textColor = kYellowColor
+                timeLabel.textColor = kYellowColor
+                checkImageView.image = checkImageView.image?.imageWithColor(kYellowColor)
+            }
         }
 
-        checkImageView.image = checkImageView.image?.imageWithColor(kThemeColor)
-        
         var tapGesture = UITapGestureRecognizer(target: self, action: "handleCheckboxTap")
         checkImageView.addGestureRecognizer(tapGesture)
     }

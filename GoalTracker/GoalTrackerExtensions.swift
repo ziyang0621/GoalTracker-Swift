@@ -24,6 +24,7 @@ extension PFObject {
             task["taskDate"] = currentDate
             task["friend"] = parent["friend"] as NSData
             task["isCompleted"] = false
+            task["completedEarly"] = false
             task["userId"]  = PFTwitterUtils.twitter().userId
             task["parent"] = parent
             taskArray.append(task)

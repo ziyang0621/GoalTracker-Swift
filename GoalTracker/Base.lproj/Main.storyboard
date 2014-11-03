@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ieQ-gw-WDI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -16,23 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f0-6T-OP9">
-                                <rect key="frame" x="282" y="295" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-DZ-D88">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L61-oP-9zO" customClass="GoalButton" customModule="GoalTracker" customModuleProvider="target">
+                                <rect key="frame" x="239" y="285" width="123" height="30"/>
+                                <state key="normal" title="Login With Twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Wb-j8-E5f"/>
+                                    <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zY5-3s-XF0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="4f0-6T-OP9" secondAttribute="centerY" constant="-10" id="AtQ-Hu-4he"/>
-                            <constraint firstAttribute="centerX" secondItem="4f0-6T-OP9" secondAttribute="centerX" constant="-5" id="fiX-L0-T1R"/>
+                            <constraint firstAttribute="bottom" secondItem="sfL-DZ-D88" secondAttribute="bottom" id="2Da-Vz-LXa"/>
+                            <constraint firstItem="sfL-DZ-D88" firstAttribute="centerY" secondItem="L61-oP-9zO" secondAttribute="centerY" id="82g-Uw-H1A"/>
+                            <constraint firstItem="sfL-DZ-D88" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OpN-kS-jFR"/>
+                            <constraint firstItem="sfL-DZ-D88" firstAttribute="centerX" secondItem="L61-oP-9zO" secondAttribute="centerX" id="dnT-BO-Jb2"/>
+                            <constraint firstAttribute="trailing" secondItem="sfL-DZ-D88" secondAttribute="trailing" id="pXK-3V-Lg7"/>
+                            <constraint firstItem="sfL-DZ-D88" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uS2-vr-3Ke"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f2R-NT-TkS"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="sfL-DZ-D88" id="q3c-Y0-rcn"/>
+                        <outlet property="loginBtn" destination="L61-oP-9zO" id="a4K-GK-iEm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,24 +290,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5he-gV-rbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2462" y="1090"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ynp-Bx-EyW">
-            <objects>
-                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ieQ-gw-WDI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gs0-Ir-A6w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9qy-Pz-nfD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="htj-cY-WOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="332" y="354"/>
         </scene>
     </scenes>
 </document>

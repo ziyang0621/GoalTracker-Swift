@@ -141,6 +141,8 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.taskDate = task!["taskDate"] as? NSDate
         
+        cell.isCompletedEarly = task!["completedEarly"] as Bool
+        
         var isCompleted = task!["isCompleted"] as? Bool
         if let isCom = isCompleted {
             if isCom {
@@ -177,6 +179,12 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     func tappedCheckbox(cell: TaskCell, isCompleted: Bool, index: Int) {
         var object = self.taskArray?[index]
         object?["isCompleted"] = isCompleted
+        if isCompleted {
+            var taskDate = object?["taskDate"] as NSDate
+            if taskDate.isLater(NSDate()) {
+                object?["completedEarly"] = true
+            }
+        }
         object?.saveInBackgroundWithBlock({
             (succeeded: Bool, error: NSError!) -> Void in
             if error == nil {

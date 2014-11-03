@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kCalendarCellID = "CalendarCell"
+
 class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RSDFDatePickerViewDelegate, RSDFDatePickerViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +26,8 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
     
     var completedDates = [NSDate]()
     
+    var completedEarlyDates = [NSDate]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +36,7 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .None
+        tableView.registerNib(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: kCalendarCellID)
         
         removeBtn.addTarget(self, action: "onRemoveGoal", forControlEvents: .TouchUpInside)
         removeBtn.layer.cornerRadius = CGRectGetHeight(removeBtn.frame) / 3
@@ -51,6 +56,8 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         calendarContainerView.addSubview(calendarView!)
         
         loadDates()
+        println("completed early date count: \(completedEarlyDates.count)")
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,12 +69,17 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         
         goalDates.removeAll(keepCapacity: false)
         completedDates.removeAll(keepCapacity: false)
+        completedEarlyDates.removeAll(keepCapacity: false)
         for object in goalTasks! {
             var date = object["taskDate"] as? NSDate
             var isCompleted = object["isCompleted"] as? Bool
             if isCompleted! {
                 completedDates.append(date!)
                 println("completed date: \(date)")
+                var completedEarly = object["completedEarly"] as? Bool
+                if completedEarly! {
+                    completedEarlyDates.append(date!)
+                }
             }
             goalDates.append(date!)
         }
@@ -75,11 +87,30 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("CalendarCell") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(kCalendarCellID) as CalendarCell
+        
+        if indexPath.row == 0 {
+            cell.nameLabel.text = "Completed Early:"
+            cell.nameLabel.textColor = kGreenColor
+            cell.countLabel.text = "\(completedEarlyDates.count)"
+            cell.countLabel.textColor = kGreenColor
+        } else if indexPath.row == 1 {
+            cell.nameLabel.text = "Completed Late:"
+            cell.nameLabel.textColor = kYellowColor
+            cell.countLabel.text = "\(completedDates.count - completedEarlyDates.count)"
+            cell.countLabel.textColor = kYellowColor
+        } else {
+            cell.nameLabel.text = "Not Completed:"
+            cell.nameLabel.textColor = kGrayColor
+            cell.countLabel.text = "\(goalDates.count - completedDates.count)"
+            cell.countLabel.textColor = kGrayColor
+        }
+        
+        return cell
     }
     
     func datePickerView(view: RSDFDatePickerView!, didSelectDate date: NSDate!) {
