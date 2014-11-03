@@ -28,13 +28,21 @@
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zY5-3s-XF0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSs-gC-Ttn">
+                                <rect key="frame" x="178" y="172" width="245" height="54"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sfL-DZ-D88" secondAttribute="bottom" id="2Da-Vz-LXa"/>
                             <constraint firstItem="sfL-DZ-D88" firstAttribute="centerY" secondItem="L61-oP-9zO" secondAttribute="centerY" id="82g-Uw-H1A"/>
                             <constraint firstItem="sfL-DZ-D88" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OpN-kS-jFR"/>
+                            <constraint firstItem="tSs-gC-Ttn" firstAttribute="centerX" secondItem="sfL-DZ-D88" secondAttribute="centerX" id="T6Y-C8-vHr"/>
                             <constraint firstItem="sfL-DZ-D88" firstAttribute="centerX" secondItem="L61-oP-9zO" secondAttribute="centerX" id="dnT-BO-Jb2"/>
+                            <constraint firstItem="L61-oP-9zO" firstAttribute="top" secondItem="tSs-gC-Ttn" secondAttribute="bottom" constant="59" id="mxp-pp-YIn"/>
                             <constraint firstAttribute="trailing" secondItem="sfL-DZ-D88" secondAttribute="trailing" id="pXK-3V-Lg7"/>
                             <constraint firstItem="sfL-DZ-D88" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uS2-vr-3Ke"/>
                         </constraints>
@@ -43,6 +51,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="sfL-DZ-D88" id="q3c-Y0-rcn"/>
                         <outlet property="loginBtn" destination="L61-oP-9zO" id="a4K-GK-iEm"/>
+                        <outlet property="titleLabel" destination="tSs-gC-Ttn" id="Mxh-Hg-zPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,16 +27,29 @@ class ViewController: UIViewController {
         loginBtn.clipsToBounds = true
         loginBtn.layer.cornerRadius = 5
         loginBtn.alpha = 0.7
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
-        
+        titleLabel.textColor = kThemeColor
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    func prepareLogin() {
+        UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            self.loginBtn.alpha = 0
+            self.titleLabel.alpha = 0
+            self.backgroundImageView.alpha = 0.8
+        }) { (finished) -> Void in
+            if (finished) {
+                UIView.beginAnimations("fade in", context: nil)
+                UIView.setAnimationDuration(1.5)
+                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+                appDelegate.userDidLogin()
+                UIView.commitAnimations()
+            }
+        }
     }
     
     @IBAction func onLogin(sender: AnyObject) {
@@ -44,12 +59,10 @@ class ViewController: UIViewController {
                 NSLog("Uh oh. The user cancelled the Twitter login.")
             } else if user.isNew {
                 println("User signed up and logged in with Twitter!")
-                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                appDelegate.userDidLogin()
+                self.prepareLogin()
             } else {
                 println("User logged in with Twitter!")
-                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                appDelegate.userDidLogin()
+                self.prepareLogin()
             }
         }
     }
