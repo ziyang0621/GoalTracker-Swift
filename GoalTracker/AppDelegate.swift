@@ -25,6 +25,7 @@ let kGrayColor = UIColor.colorWithRGBHex(0xB898C90, alpha: 1.0)
 let dateFormatter = NSDateFormatter()
 let timeFormatter = NSDateFormatter()
 let fullFormatter = NSDateFormatter()
+let AppDelegateAccessor = UIApplication.sharedApplication().delegate as AppDelegate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,7 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var frostedMenuVC: REFrostedViewController?
-
+    
+    var cardAnimationController = CECardsAnimationController()
+    
+    var natGeoAnimationController = CENatGeoAnimationController()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -79,12 +84,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         frostedMenuVC = REFrostedViewController(contentViewController: goalListNav, menuViewController: sidePanelVC)
         frostedMenuVC?.direction = .Left
         frostedMenuVC?.liveBlur = true
+        
+        UIView.beginAnimations("fade in", context: nil)
+        UIView.setAnimationDuration(1.5)
         self.window?.rootViewController = frostedMenuVC
+        UIView.commitAnimations()
     }
     
     func userDidLogout() {
+        UIView.beginAnimations("fade out", context: nil)
+        UIView.setAnimationDuration(1.5)
         var loginVC = UIStoryboard.loginViewController()
         window?.rootViewController = loginVC
+        UIView.commitAnimations()
+        
         NSUserDefaults.standardUserDefaults().removeObjectForKey(kProfileImageURLStringKey)
         NSUserDefaults.standardUserDefaults().synchronize()
     }

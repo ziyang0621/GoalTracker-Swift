@@ -50,6 +50,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTableView", name: kRefreshGoalListTableView, object: nil)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -170,7 +171,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
                 if error == nil {
                     calendarVC?.goalTasks = objects as? [PFObject]
                     MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: false)
-                    self.navigationController?.pushViewController(calendarVC!, animated: true)
+                    self.navigationController?.pushViewController(calendarVC!, animated: false)
                 }
             })
         }
@@ -199,6 +200,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
+
 
     /*
     // MARK: - Navigation

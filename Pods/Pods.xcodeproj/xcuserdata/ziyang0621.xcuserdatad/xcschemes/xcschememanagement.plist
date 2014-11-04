@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LetterpressExplosion.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MRProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-VCTransitionsLibrary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,77 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00D0F3E4AF67ECCF17BF2A89</key>
+		<key>0D384DF2B1E5A9E00F1D9BF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>384F090D5A544289B91AC351</key>
+		<key>1556DDE5C4542FFD68D18A7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CE287F052487D480D737DAA</key>
+		<key>2E588573EDFF2C45860DDF67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E996D0D7668FEC3EEAC8844</key>
+		<key>311F0F592F7A53F81BA1CE87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7AFA3E9FCDB6D72D35932060</key>
+		<key>8525ED418C22D88A75E880E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>889739BC9603DEBBB8AA8D59</key>
+		<key>A428CA88A2031916AC905E37</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97BCDFAA51A644D7A02306CC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A10243234507E92A44270B5C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BA1D16A4D14A02AB9C1B25D2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BF7ABA6D528F417383238C0D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C8E401D1F33D5C12526FA8AE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF2E3901A0C64DB2A5D6E81F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D5B2ECC2BF374AE0BD37B378</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D7027C9B655D84A5719A1548</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EEEC6EF128AD1CE720932C16</key>
+		<key>A693596A6850A3ED823D1ED1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

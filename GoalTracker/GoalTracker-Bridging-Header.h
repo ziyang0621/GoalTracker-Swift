@@ -7,3 +7,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "REFrostedViewController.h"
 #import "MRProgress.h"
+#import "UIView+Explode.h"
+#import "CENatGeoAnimationController.h"
+#import "CECardsAnimationController.h"
+#import "CEPortalAnimationController.h"

@@ -10,7 +10,7 @@ import UIKit
 
 let kCalendarCellID = "CalendarCell"
 
-class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RSDFDatePickerViewDelegate, RSDFDatePickerViewDataSource {
+class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RSDFDatePickerViewDelegate, RSDFDatePickerViewDataSource, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,6 +45,8 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         removeBtn.backgroundColor = kRedColor
         removeBtn.clipsToBounds = true
         removeBtn.tintColor = UIColor.whiteColor()
+        
+        self.navigationController?.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -124,6 +126,7 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
                 goalListVC?.taskArray = [PFObject]()
                 goalListVC?.taskArray!.append(task)
                 var goalListNav = UINavigationController(rootViewController: goalListVC!)
+                goalListNav.transitioningDelegate = self
                 self.presentViewController(goalListNav, animated: true, completion: nil)
             }
         }
@@ -171,6 +174,26 @@ class GoalCalendarViewController: UIViewController, UITableViewDataSource, UITab
         alertController.addAction(cancelAction)
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        println("animation controller calendar ")
+        
+        AppDelegateAccessor.natGeoAnimationController.reverse = operation == UINavigationControllerOperation.Pop
+        return AppDelegateAccessor.natGeoAnimationController
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        println("present animation")
+        AppDelegateAccessor.cardAnimationController.reverse = false
+        return AppDelegateAccessor.cardAnimationController
+    }
+
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        println("dismiss animation")
+        AppDelegateAccessor.cardAnimationController.reverse = true
+        return AppDelegateAccessor.cardAnimationController
     }
     
     /*

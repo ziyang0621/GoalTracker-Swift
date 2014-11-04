@@ -43,11 +43,8 @@ class ViewController: UIViewController {
             self.backgroundImageView.alpha = 0.8
         }) { (finished) -> Void in
             if (finished) {
-                UIView.beginAnimations("fade in", context: nil)
-                UIView.setAnimationDuration(1.5)
                 var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
                 appDelegate.userDidLogin()
-                UIView.commitAnimations()
             }
         }
     }

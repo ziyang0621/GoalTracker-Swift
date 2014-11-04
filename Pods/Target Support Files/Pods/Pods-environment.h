@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 4
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// LetterpressExplosion
+#define COCOAPODS_POD_AVAILABLE_LetterpressExplosion
+#define COCOAPODS_VERSION_MAJOR_LetterpressExplosion 1
+#define COCOAPODS_VERSION_MINOR_LetterpressExplosion 0
+#define COCOAPODS_VERSION_PATCH_LetterpressExplosion 0
+
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
 #define COCOAPODS_VERSION_MAJOR_MRProgress 0
@@ -119,4 +125,10 @@
 #define COCOAPODS_VERSION_MAJOR_RSDayFlow 0
 #define COCOAPODS_VERSION_MINOR_RSDayFlow 7
 #define COCOAPODS_VERSION_PATCH_RSDayFlow 1
+
+// VCTransitionsLibrary
+#define COCOAPODS_POD_AVAILABLE_VCTransitionsLibrary
+#define COCOAPODS_VERSION_MAJOR_VCTransitionsLibrary 1
+#define COCOAPODS_VERSION_MINOR_VCTransitionsLibrary 4
+#define COCOAPODS_VERSION_PATCH_VCTransitionsLibrary 0
 
