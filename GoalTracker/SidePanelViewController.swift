@@ -66,18 +66,32 @@ class SidePanelViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
-            var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             var goalListVC = UIStoryboard.goalListViewController()
             goalListVC?.listDate = NSDate()
             var goalListNav = UINavigationController(rootViewController: goalListVC!)
-            appDelegate.frostedMenuVC?.contentViewController = goalListNav
-            appDelegate.frostedMenuVC?.hideMenuViewController()
+            AppDelegateAccessor.frostedMenuVC?.contentViewController = goalListNav
+            AppDelegateAccessor.frostedMenuVC?.hideMenuViewController()
         }
         else if indexPath.row == 1 {
-            PFUser.logOut()
-            var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            appDelegate.userDidLogout()
+            onSignout()
         }
+    }
+    
+    func onSignout() {
+        let alertController = UIAlertController(title: "Sign Out", message: "Do you want to sign out?", preferredStyle: .ActionSheet)
+        
+        let removeAction = UIAlertAction(title: "Yes, sign out", style: .Destructive, handler: {
+            action in
+                PFUser.logOut()
+                AppDelegateAccessor.userDidLogout()
+            }
+        )
+        alertController.addAction(removeAction)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 

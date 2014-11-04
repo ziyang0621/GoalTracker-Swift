@@ -43,8 +43,7 @@ class ViewController: UIViewController {
             self.backgroundImageView.alpha = 0.8
         }) { (finished) -> Void in
             if (finished) {
-                var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-                appDelegate.userDidLogin()
+                AppDelegateAccessor.userDidLogin()
             }
         }
     }

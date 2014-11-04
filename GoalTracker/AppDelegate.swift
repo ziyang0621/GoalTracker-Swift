@@ -85,19 +85,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         frostedMenuVC?.direction = .Left
         frostedMenuVC?.liveBlur = true
         
-        UIView.beginAnimations("fade in", context: nil)
-        UIView.setAnimationDuration(1.5)
-        self.window?.rootViewController = frostedMenuVC
-        UIView.commitAnimations()
+        if let win = self.window {
+            UIView.transitionWithView(win, duration: 1.5, options: UIViewAnimationOptions.TransitionCurlDown, animations: { () -> Void in
+                win.rootViewController = self.frostedMenuVC
+                }, completion: nil)
+        }
     }
     
     func userDidLogout() {
-        UIView.beginAnimations("fade out", context: nil)
-        UIView.setAnimationDuration(1.5)
-        var loginVC = UIStoryboard.loginViewController()
-        window?.rootViewController = loginVC
-        UIView.commitAnimations()
         
+        if let win = self.window {
+            UIView.transitionWithView(win, duration: 1.5, options: UIViewAnimationOptions.TransitionCurlUp, animations: { () -> Void in
+                win.rootViewController = UIStoryboard.loginViewController()
+                }, completion: nil)
+        }
+       
         NSUserDefaults.standardUserDefaults().removeObjectForKey(kProfileImageURLStringKey)
         NSUserDefaults.standardUserDefaults().synchronize()
     }
