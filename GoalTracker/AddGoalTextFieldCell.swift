@@ -54,11 +54,11 @@ class AddGoalTextFieldCell: UITableViewCell {
         if textFieldType! == .DatePicker {
             datePickerView.datePickerMode = .Date
             formatter.dateFormat = "MM/dd/yyyy"
+            datePickerView.minimumDate = NSDate()
         } else if textFieldType! == .TimePicker {
             datePickerView.datePickerMode = .Time
             formatter.dateFormat = "hh:mm a"
         }
-        datePickerView.minimumDate = NSDate()
         datePickerView.backgroundColor = UIColor.whiteColor()
         addGoalTextField.inputView = datePickerView
         datePickerView.addTarget(self, action: "handleDateChanged:", forControlEvents: .ValueChanged)

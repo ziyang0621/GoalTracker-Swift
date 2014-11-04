@@ -11,7 +11,7 @@ import UIKit
 let kTaskCellID = "TaskCell"
 let kRefreshGoalListTableView = "refreshGoalListTableView"
 
-class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate {
+class GoalListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TaskCellDelegate, UIViewControllerTransitioningDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -122,6 +122,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
     func onAdd() {
         var addGoalVC = UIStoryboard.addGoalViewController()
         var addNav = UINavigationController(rootViewController: addGoalVC!)
+        addNav.transitioningDelegate = self
         presentViewController(addNav, animated: true, completion: nil)
     }
     
@@ -171,7 +172,7 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
                 if error == nil {
                     calendarVC?.goalTasks = objects as? [PFObject]
                     MRProgressOverlayView.dismissOverlayForView(self.navigationController?.view, animated: false)
-                    self.navigationController?.pushViewController(calendarVC!, animated: false)
+                    self.navigationController?.pushViewController(calendarVC!, animated: true)
                 }
             })
         }
@@ -198,6 +199,19 @@ class GoalListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         })
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        println("present animation")
+        AppDelegateAccessor.portalAnimationController.reverse = false
+        return AppDelegateAccessor.portalAnimationController
+    }
+    
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        println("dismiss animation")
+        AppDelegateAccessor.portalAnimationController.reverse = true
+        return AppDelegateAccessor.portalAnimationController
     }
     
 

@@ -34,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var frostedMenuVC: REFrostedViewController?
     
-    var cardAnimationController = CECardsAnimationController()
-    
     var natGeoAnimationController = CENatGeoAnimationController()
+    
+    var portalAnimationController = CEPortalAnimationController()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
