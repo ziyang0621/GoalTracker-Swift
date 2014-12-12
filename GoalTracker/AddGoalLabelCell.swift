@@ -17,7 +17,7 @@ class AddGoalLabelCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        textLabel.textColor = UIColor.grayColor()
+        textLabel!.textColor = UIColor.grayColor()
         accessoryType = .DisclosureIndicator
         
         var upperDivider = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(bounds), 1))

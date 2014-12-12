@@ -180,7 +180,7 @@ class AddGoalViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 4 {
             var cell = tableView.dequeueReusableCellWithIdentifier(kAddGoalLabelID) as AddGoalLabelCell
-            cell.textLabel.text = selectedFriend?.screenname ?? "select friend"
+            cell.textLabel!.text = selectedFriend?.screenname ?? "select friend"
             return cell
         }
         if indexPath.section != 0 {
